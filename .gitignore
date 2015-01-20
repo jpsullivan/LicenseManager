@@ -1,3 +1,9 @@
+# Node.js / npm files
+node_modules/
+
+# NuGet files
+packages/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
