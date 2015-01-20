@@ -65,6 +65,31 @@ _ReSharper*
 # Click-Once directory
 publish
 
+# Others
+[Bb]in
+[Oo]bj
+sql
+TestResults
+*.Cache
+ClientBin
+stylecop.*
+~$*
+*.dbmdl
+Generated_Code #added for RIA/Silverlight projects
+*.results.xml
+nunit-*.xml
+*.userprefs
+packaging/
+tools/FAKE.Core
+tools/SourceLink.Fake
+tools/xunit.runners
+*.ncrunch*
+*.GhostDoc.xml
+
+# New VS Test Runner creates arbitrary folders with PDBs
+*.pdb
+pingme.txt
+
 # =========================
 # Operating System Files
 # =========================
