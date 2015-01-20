@@ -1,0 +1,79 @@
+﻿@using Jil
+@using LicenseManager.Infrastructure.Extensions
+@model LicenseManager.Models.ViewModels.CustomerListModel
+
+@{
+    ViewBag.Title = "Administration - LM";
+}
+
+<header class="aui-page-header">
+    <div class="aui-page-header-inner">
+        <div class="aui-page-header-main">
+            <h2>Users</h2>
+        </div>
+        <div class="aui-page-header-actions">
+            <a class="aui-button" href="@Url.NewCustomer()" autocomplete="off" tabindex="0">Create customer</a>
+        </div>
+    </div>
+</header>
+
+<table class="aui paged-table customer-table" id="list_customers">
+    <thead>
+        <tr>
+            <th id="name">Name</th>
+            <th id="billing_contact">Billing Contact</th>
+            <th id="technical_contact">Technical Contact</th>
+            <th id="hosted">Hosted</th>
+            <th id="actions"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Customers != null)
+        {
+            foreach (var customer in Model.Customers)
+            {
+                <tr>
+                    <td headers="name">
+                        <div title="@customer.Name">
+                            @customer.Name
+                        </div>
+                    </td>
+                    <td headers="billing_contact">
+                        <div title="@customer.BillingContact">
+                            <a href="mailto:@customer.BillingContactEmail">@customer.BillingContact</a>
+                        </div>
+                    </td>
+                    <td headers="technical_contact">
+                        <div title="@customer.TechnicalContact">
+                            <a href="mailto:@customer.TechnicalContactEmail">@customer.TechnicalContact</a>
+                        </div>
+                    </td>
+                    <td headers="hosted">
+                        <div>
+                            @if (customer.IsHosted)
+                            {
+                                <span class="aui-icon aui-icon-small aui-iconfont-approve" style="color: #057D07"></span>
+                            }
+                            else
+                            {
+                                <span class="aui-icon aui-icon-small aui-iconfont-error" style="color: #C52C19"></span>
+                            }
+                        </div>
+                    </td>
+                    <td headers="actions">
+                        <a href="#" class="delete-button delete-customer" title="Delete" data-for="@customer.Name">
+                            <span class="aui-icon aui-icon-small aui-iconfont-remove"></span>
+                        </a>
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<script>
+    window.bootstrapData = {
+        customers: @Html.Raw(JSON.Serialize(Model.Customers))
+    };
+</script>
+

@@ -1,0 +1,23 @@
+﻿table.aui {
+    > tbody > tr:hover {
+        background-color: #F5F5F5;
+
+        .delete-button {
+            visibility: visible;
+        }
+    }
+
+    > tbody > tr .delete-button {
+        color: #bbb;
+        visibility: hidden;
+
+        &:hover {
+            color: #505050;
+            text-decoration: none;
+        }
+    }
+
+    td.empty-field {
+        color: #999;
+    }
+}

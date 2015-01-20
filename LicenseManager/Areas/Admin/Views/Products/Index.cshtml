@@ -1,0 +1,53 @@
+﻿@using Jil
+@using LicenseManager.Infrastructure.Extensions
+@model LicenseManager.Areas.Admin.ViewModels.ProductListModel
+
+@{
+    //Layout = "../Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Administration - LM";
+}
+
+<header class="aui-page-header">
+    <div class="aui-page-header-inner">
+        <div class="aui-page-header-main">
+            <h2>Products</h2>
+        </div>
+        <div class="aui-page-header-actions">
+            <a class="aui-button" href="@Url.NewCustomer()" autocomplete="off" tabindex="0">Create product</a>
+        </div>
+    </div>
+</header>
+
+<table class="aui paged-table product-table" id="list_products">
+    <thead>
+        <tr>
+            <th id="name">Name</th>
+            <th id="description">Description</th>
+            <th id="actions"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Products != null)
+        {
+            foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td headers="name">
+                        <div title="@product.Name">@product.Name</div>
+                    </td>
+                    <td headers="description">
+                        <div title="@product.">@product.Description</div>
+                    </td>
+                    <td headers="actions"></td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<script>
+    window.bootstrapData = {
+        products: @Html.Raw(JSON.Serialize(Model.Products))
+    };
+</script>
+

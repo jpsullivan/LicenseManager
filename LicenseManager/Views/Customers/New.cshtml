@@ -1,0 +1,52 @@
+﻿@using LicenseManager.Infrastructure.Extensions
+@model LicenseManager.Models.ViewModels.NewCustomerModel
+
+@{
+    Layout = "~/Views/Shared/_FocusedLayout.cshtml";
+}
+
+<h2>Create User</h2>
+
+@using (Html.BeginForm("CreateCustomer", "Customers", FormMethod.Post, new { @class = "aui" }))
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <div class="field-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "text" })
+            <div class="error">@Html.ValidationMessageFor(m => m.Name)</div>
+        </div>
+        <div class="field-group">
+            @Html.LabelFor(m => m.BillingContact)
+            @Html.TextBoxFor(m => m.BillingContact, new {@class = "text"})
+            <div class="error">@Html.ValidationMessageFor(m => m.BillingContact)</div>
+        </div>
+        <div class="field-group">
+            @Html.LabelFor(m => m.BillingContactEmail)
+            @Html.TextBoxFor(m => m.BillingContactEmail, new {@class = "text"})
+            <div class="error">@Html.ValidationMessageFor(m => m.BillingContactEmail)</div>
+        </div>
+        <div class="field-group">
+            @Html.LabelFor(m => m.TechnicalContact)
+            @Html.TextBoxFor(m => m.TechnicalContact, new {@class = "text"})
+            <div class="error">@Html.ValidationMessageFor(m => m.TechnicalContact)</div>
+        </div>
+        <div class="field-group">
+            @Html.LabelFor(m => m.TechnicalContactEmail)
+            @Html.TextBoxFor(m => m.TechnicalContactEmail, new {@class = "text"})
+            <div class="error">@Html.ValidationMessageFor(m => m.TechnicalContactEmail)</div>
+        </div>
+        <div class="field-group">
+            @Html.LabelFor(m => m.IsHosted)
+            @Html.CheckBoxFor(m => m.IsHosted, new { @class = "checkbox" })
+        </div>
+    </fieldset>
+
+    <div class="buttons-container">
+        <div class="buttons">
+            <input class="aui-button aui-button-primary" type="submit" id="submit" name="submit" value="Create customer">
+            <a id="cancel" class="aui-button aui-button-link" name="cancel" accesskey="c" href="@Url.AdminCustomers()">Cancel</a>
+        </div>
+    </div>
+}

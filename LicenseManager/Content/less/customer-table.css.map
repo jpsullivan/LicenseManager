@@ -1,0 +1,1 @@
+﻿{"version":3,"sources":["customer-table.less","static/global-mixins.less"],"names":[],"mappings":"AAEA,eACI;EACI,WAAA;;AAFR,eAKI;EACI,mBAAA;;AAEA,eAHJ,GAGK,cAAe;ECNpB,0BAAA;EACA,uBAAA;EACA,gBAAA;EACA,mBAAA;EDKQ,qBAAA;EACA,gBAAA;EACA,sBAAA;;AAGJ,eAVJ,GAUK,gBAAiB;EACd,eAAA;EACA,sBAAA","file":"customer-table.css"}

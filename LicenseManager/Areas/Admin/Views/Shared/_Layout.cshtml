@@ -1,0 +1,82 @@
+﻿@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@using LicenseManager.Infrastructure.Extensions
+@using LicenseManager.Infrastructure.Helpers
+@using LicenseManager.Infrastructure.Optimizations
+@using LicenseManager.Views
+@using StackExchange.Profiling
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/lib/aui/aui-all.css")" media="all">
+    <!--[if lt IE 9]><link rel="stylesheet" href="@Url.Content("/Content/css/lib/aui/aui-ie.css")" media="all"><![endif]-->
+    <!--[if IE 9]><link rel="stylesheet" href="@Url.Content("/Content/css/lib/aui/aui-ie9.css")" media="all"><![endif]-->
+    @Html.RenderCssBundle("app.css", BundleOptions.BuildConfigDependent)
+</head>
+<body class="aui-layout">
+<div id="page">
+    @Html.Partial("_AuthenticatedHeader")
+
+    <section id="content" role="main">
+        <header class="aui-page-header">
+            <div class="aui-page-header">
+                <div class="aui-page-header-inner">
+                    <h1>Administration</h1>
+                </div>
+            </div>
+        </header>
+
+        <div class="aui-page-panel">
+            <div class="aui-page-panel-inner">
+                <div class="aui-page-panel-nav">
+                    <nav class="aui-navgroup aui-navgroup-vertical">
+                        <div class="aui-navgroup-inner">
+                            <ul class="aui-nav">
+                                <li><a href="@Url.Admin()">Overview</a></li>
+                            </ul>
+                            <div class="aui-nav-heading">
+                                <strong>Accounts</strong>
+                            </div>
+                            <ul class="aui-nav">
+                                <li><a href="@Url.AdminUsers()">Users</a></li>
+                                <li><a href="@Url.AdminCustomers()">Customers</a></li>
+                                <li><a href="#">Products</a></li>
+                            </ul>
+                        </div>
+                    </nav><!-- .aui-navgroup -->
+                </div> <!-- .aui-page-panel-nav -->
+
+                <section class="aui-page-panel-content">
+                    @RenderBody()
+                </section> <!-- aui-page-panel-content-->
+            </div>
+        </div>
+    </section>
+
+    @Html.Partial("_Footer")
+</div>
+
+<div id="dialog_container"></div>
+
+<script>
+        // set the global application vars
+        window.rootUrl = '@Url.SiteRoot()';
+        window.applicationPath = '@Context.Request.ApplicationPath.EnsureTrailingSlash()';
+        window.currentUser = @ViewHelpers.JsEncode(CurrentUser);
+    </script>
+
+    <script type="text/javascript" src="@Url.Content("~/Content/js/lib/handlebars.min.js")"></script>
+    <script type="text/javascript" src="@Url.Content("~/Content/js/lib/aui/aui-all.js")"></script>
+    @Html.RenderJsBundle("templates.js", BundleOptions.MinifiedAndCombined)
+    @RenderSection("scripts", false)
+    @RenderSection("bootstrap", false)
+    @Html.RenderJsBundle("bundle.js", BundleOptions.BuildConfigDependent)
+    @RenderSection("secondaryScripts", false)
+
+    @MiniProfiler.RenderIncludes()
+</body>
+</html>

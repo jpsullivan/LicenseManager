@@ -1,0 +1,33 @@
+﻿@using LicenseManager
+@using LicenseManager.Infrastructure.Extensions
+@model LicenseManager.Models.ViewModels.LogOnViewModel
+
+<div id="login_form" class="workflow-box">
+    @using (Html.BeginForm("SignIn", "Authentication", FormMethod.Post, new { @class = "aui top-label" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.Hidden("ReturnUrl", ViewData[Constants.ReturnUrlViewDataKey])
+        @Html.Hidden("LinkingAccount", Model.External != null)
+
+        @Html.ValidationSummaryFor("SignIn")
+
+        <div class="field-group">
+            @Html.LabelFor(m => m.SignIn.UserNameOrEmail)
+            @Html.TextBoxFor(m => m.SignIn.UserNameOrEmail, new { @class = "text long-field" })
+            @Html.ValidationMessageFor(m => m.SignIn.UserNameOrEmail)
+        </div>
+
+        <div class="field-group">
+            @Html.LabelFor(m => m.SignIn.Password)
+            @Html.PasswordFor(m => m.SignIn.Password, new {@class = "text long-field"})
+            @Html.ValidationMessageFor(m => m.SignIn.Password)
+        </div>
+
+        <div class="buttons-container">
+            <div class="buttons">
+                <input class="aui-button aui-button-primary" type="submit" id="submit" name="submit" value="Log in">
+                @Html.ActionLink("Forgot your password?", "ForgotPassword", "Users", new { @class = "aui-button aui-button-link" })
+            </div>
+        </div>
+    }
+</div>

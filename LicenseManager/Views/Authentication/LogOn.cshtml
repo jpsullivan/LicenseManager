@@ -1,0 +1,8 @@
+﻿@model LicenseManager.Models.ViewModels.LogOnViewModel
+@{
+    ViewBag.Title = "Sign In";
+    Layout = "../Shared/_LogOnLayout.cshtml";
+}
+
+<h2>Log in to Intra License Manager</h2>
+@Html.Partial("_SignIn", Model)

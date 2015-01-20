@@ -1,0 +1,9 @@
+﻿.aui-page-focused .aui-page-panel {
+  margin-top: 50px;
+}
+.aui-page-focused .aui-page-panel-content form.aui .buttons-container {
+  border-top: 1px solid #ccc;
+  margin-top: 20px;
+  padding-top: 20px;
+}
+/*# sourceMappingURL=focused.css.map */

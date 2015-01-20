@@ -1,0 +1,45 @@
+﻿@model LicenseManager.Models.ViewModels.NewLicenseViewModel
+
+@{
+    Layout = "../Shared/_FocusedLayout.cshtml";
+    ViewBag.Title = "New License - LM";
+    var currentStep = Model.Steps[Model.CurrentStepIndex];
+}
+
+<h2>Create a new license</h2>
+@using (Html.BeginForm("NextStep", "License", FormMethod.Post, new { @class = "aui" }))
+{
+    @Html.AntiForgeryToken()
+    
+    @Html.Hidden("licenseWizard", new Microsoft.Web.Mvc.MvcSerializer().Serialize(Model))
+    @Html.Hidden("StepType", currentStep.GetType())
+    
+    if (Model.CurrentStepIndex > 0) { }
+
+    <fieldset>
+        @Html.EditorFor(x => currentStep, null, "")
+    </fieldset>
+
+    <div class="buttons-container">
+        <div class="buttons">
+            @if (Model.CurrentStepIndex < Model.Steps.Count - 1)
+            {
+                <input class="aui-button aui-button-primary" type="submit" id="next" name="next" value="Next">
+            }
+            else
+            {
+                <input class="aui-button aui-button-primary" type="submit" id="submit" name="submit" value="Create license">
+            }
+
+            @if (Model.CurrentStepIndex > 0)
+            {
+                <input class="aui-button aui-button-link" type="submit" id="prev" name="prev" value="Previous">
+@*                <a id="prev" class="aui-button aui-button-link" name="prev" accesskey="c" href="#">Previous</a>*@
+            }
+            else
+            {
+                <a id="cancel" class="aui-button aui-button-link" name="cancel" accesskey="c" href="#">Cancel</a>
+            }
+        </div>
+    </div>
+}

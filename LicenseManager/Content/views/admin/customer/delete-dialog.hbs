@@ -1,0 +1,18 @@
+﻿<section role="dialog" id="delete_customer_dialog" class="aui-layer aui-dialog2 aui-dialog2-medium aui-dialog2-warning" aria-hidden="true">
+    <header class="aui-dialog2-header">
+        <h2 class="aui-dialog2-header-main">Delete Customer</h2>
+        <a class="aui-dialog2-header-close">
+            <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Cancel</span>
+        </a>
+    </header>
+    <div class="aui-dialog2-content">
+        <p>Are you really sure you want to delete the customer <strong>{{ displayName }}</strong>?</p>
+        <p>This action can't be undone and all user generated data will be removed.</p>
+    </div>
+    <footer class="aui-dialog2-footer">
+        <div class="aui-dialog2-footer-actions">
+            <button id="dialog-create" class="aui-button aui-button-light">Remove customer</button>
+            <button id="dialog-close-button" class="aui-button aui-button-link">Close</button>
+        </div>
+    </footer>
+</section>

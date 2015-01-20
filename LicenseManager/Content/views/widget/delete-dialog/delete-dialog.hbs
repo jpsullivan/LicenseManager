@@ -1,0 +1,18 @@
+﻿<section role="dialog" id="demo-dialog-error" class="aui-layer aui-dialog2 aui-dialog2-medium aui-dialog2-warning" aria-hidden="true">
+  <header class="aui-dialog2-header">
+    <h2 class="aui-dialog2-header-main">Delete {{ entityName }}</h2>
+    <a class="aui-dialog2-header-close">
+      <span class="aui-icon aui-icon-small aui-iconfont-close-dialog">Cancel</span>
+    </a>
+  </header>
+  <div class="aui-dialog2-content">
+    <p>Are you really sure you want to delete the {{ entityName}} <strong>{{ displayName }}</strong>?</p>
+    <p>This action can't be undone and all user generated data will be removed.</p>
+  </div>
+  <footer class="aui-dialog2-footer">
+    <div class="aui-dialog2-footer-actions">
+      <button class="aui-button aui-button-light">Remove {{ entityName }}</button>
+      <button id="error-dialog-close-button" class="aui-button aui-button-link">Cancel</button>
+    </div>
+  </footer>
+</section>

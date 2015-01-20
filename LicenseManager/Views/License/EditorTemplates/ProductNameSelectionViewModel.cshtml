@@ -1,0 +1,10 @@
+﻿@model LicenseManager.Models.ViewModels.ProductNameSelectionViewModel
+
+@{
+    var dropdownItems = Model.Products.Select(product => new SelectListItem { Value = product.Id.ToString(), Text = product.Name }).ToList();
+}
+
+<div class="field-group">
+    @Html.LabelFor(m => m.ProductId)
+    @Html.DropDownListFor(m => m.ProductId, dropdownItems, "Choose a product", new { @class = "select" })
+</div>

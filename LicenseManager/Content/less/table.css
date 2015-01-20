@@ -1,0 +1,18 @@
+﻿table.aui > tbody > tr:hover {
+  background-color: #F5F5F5;
+}
+table.aui > tbody > tr:hover .delete-button {
+  visibility: visible;
+}
+table.aui > tbody > tr .delete-button {
+  color: #bbb;
+  visibility: hidden;
+}
+table.aui > tbody > tr .delete-button:hover {
+  color: #505050;
+  text-decoration: none;
+}
+table.aui td.empty-field {
+  color: #999;
+}
+/*# sourceMappingURL=table.css.map */

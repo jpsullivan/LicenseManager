@@ -1,0 +1,20 @@
+﻿.customer-table #actions {
+  width: 16px;
+}
+.customer-table td {
+  white-space: nowrap;
+}
+.customer-table td[headers=name] > div {
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  max-width: 240px;
+  vertical-align: middle;
+}
+.customer-table td[headers=hosted] > div {
+  max-width: 40px;
+  vertical-align: middle;
+}
+/*# sourceMappingURL=customer-table.css.map */

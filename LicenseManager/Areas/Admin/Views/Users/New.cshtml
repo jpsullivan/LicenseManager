@@ -1,0 +1,48 @@
+﻿@using LicenseManager.Infrastructure.Extensions
+@model LicenseManager.Areas.Admin.ViewModels.NewUserModel
+
+@{
+    Layout = "~/Views/Shared/_FocusedLayout.cshtml";
+}
+
+<h2>Create User</h2>
+
+@using (Html.BeginForm("CreateUser", "Users", FormMethod.Post, new { @class = "aui" }))
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <div class="field-group">
+            @Html.LabelFor(m => m.Username)
+            @Html.TextBoxFor(m => m.Username, new {@class = "text"})
+            <div class="error">@Html.ValidationMessageFor(m => m.Username)</div>
+        </div>
+        <div class="field-group">
+            @Html.LabelFor(m => m.FullName)
+            @Html.TextBoxFor(m => m.FullName, new { @class = "text" })
+            <div class="error">@Html.ValidationMessageFor(m => m.FullName)</div>
+        </div>
+        <div class="field-group">
+            @Html.LabelFor(m => m.EmailAddress)
+            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "text" })
+            <div class="error">@Html.ValidationMessageFor(m => m.EmailAddress)</div>
+        </div>
+        <div class="field-group">
+            @Html.LabelFor(m => m.Password)
+            @Html.PasswordFor(m => m.Password, new {@class = "text"})
+            <div class="error">@Html.ValidationMessageFor(m => m.Password)</div>
+        </div>
+        <div class="field-group">
+            @Html.LabelFor(m => m.PasswordConfirmation)
+            @Html.PasswordFor(m => m.PasswordConfirmation, new { @class = "text" })
+            <div class="error">@Html.ValidationMessageFor(m => m.PasswordConfirmation)</div>
+        </div>
+    </fieldset>
+
+    <div class="buttons-container">
+        <div class="buttons">
+            <input class="aui-button aui-button-primary" type="submit" id="submit" name="submit" value="Create user">
+            <a id="cancel" class="aui-button aui-button-link" name="cancel" accesskey="c" href="@Url.AdminUsers()">Cancel</a>
+        </div>
+    </div>
+}

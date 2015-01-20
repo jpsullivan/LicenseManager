@@ -1,0 +1,68 @@
+﻿@using Jil
+@using LicenseManager.Infrastructure.Extensions
+@model LicenseManager.Areas.Admin.ViewModels.UserListModel
+
+@{
+    //Layout = "../Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Administration - LM";
+}
+
+<header class="aui-page-header">
+    <div class="aui-page-header-inner">
+        <div class="aui-page-header-main">
+            <h2>Users</h2>
+        </div>
+        <div class="aui-page-header-actions">
+            <a class="aui-button create-user-link" href="@Url.AdminNewUser()" autocomplete="off" tabindex="0">Create user</a>
+        </div>
+    </div>
+</header>
+
+<table class="aui paged-table user-table" id="list_users">
+    <thead>
+    <tr>
+        <th id="fullname">Name</th>
+        <th id="username">Username</th>
+        <th id="email">Email</th>
+        <th id="actions"></th>
+    </tr>
+    </thead>
+    <tbody>
+    @if (Model.Users != null)
+    {
+        foreach (var user in Model.Users)
+        {
+            <tr>
+                <td headers="fullname">
+                    <div class="avatar-with-name" title="@user.FullName">
+                        <span class="aui-avatar aui-avatar-small user-avatar" data-username="@user.Username">
+                                <span class="aui-avatar-inner">
+                                    <img src="http://www.gravatar.com/avatar/d5d6b2b698378817adf0fa9336d4d8ac.jpg?s=48&amp;d=mm" alt="@user.FullName">
+                                </span>
+                            </span>
+                        <a href="#" title="@user.FullName">@user.FullName</a>
+                    </div>
+                </td>
+                <td headers="username" title="@user.Username">
+                    <div>@user.Username</div>
+                </td>
+                <td headers="email">
+                    <div>@user.EmailAddress</div>
+                </td>
+                <td headers="actions">
+                    <a href="#" class="delete-button delete-user" title="Delete" data-for="@user.FullName">
+                        <span class="aui-icon aui-icon-small aui-iconfont-remove"></span>
+                    </a>
+                </td>
+            </tr>
+        }
+    }
+    </tbody>
+</table>
+
+<script>
+    window.bootstrapData = {
+        users: @Html.Raw(JSON.Serialize(Model.Users))
+    };
+</script>
+

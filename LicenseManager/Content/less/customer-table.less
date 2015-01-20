@@ -1,0 +1,23 @@
+﻿@import "static/global.less";
+
+.customer-table {
+    #actions {
+        width: 16px;
+    }
+
+    td {
+        white-space: nowrap;
+
+        &[headers=name] > div {
+            .text-overflow();
+            display: inline-block;
+            max-width: 240px;
+            vertical-align: middle;
+        }
+
+        &[headers=hosted] > div {
+            max-width: 40px;
+            vertical-align: middle;
+        }
+    }
+}
