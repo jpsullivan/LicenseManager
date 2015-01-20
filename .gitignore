@@ -23,6 +23,48 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+# Build results
+bin/[Dd]ebug/
+bin/[Rr]elease/
+*_i.c
+*_p.c
+*.ilk
+*.log
+*.meta
+*.obj
+*.pch
+bin/**/*.pdb
+*.pgc
+*.pgd
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.vspscc
+.builds
+
+# Roslyn cache directories
+*.ide/
+
+# Visual C++ cache files
+ipch/
+*.aps
+*.ncb
+*.opensdf
+*.sdf
+
+# Visual Studio profiler
+*.psess
+*.vsp
+
+# ReSharper is a .NET coding add-in
+_ReSharper*
+
+# Click-Once directory
+publish
+
 # =========================
 # Operating System Files
 # =========================
