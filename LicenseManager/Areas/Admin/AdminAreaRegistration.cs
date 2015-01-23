@@ -19,6 +19,9 @@ namespace LicenseManager.Areas.Admin
                 "Admin/{controller}/{action}/{id}",
                 new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            // enforce lower-case URL's so that case-sentive routes don't break
+            context.Routes.LowercaseUrls = true;
         }
     }
 }
