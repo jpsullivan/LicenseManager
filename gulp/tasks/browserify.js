@@ -23,7 +23,7 @@ var notify        = require("gulp-notify");
 var cache = {};
 var pkgCache = {};
 
-var entryPoint = '../../Content/js/app/app.js';
+var entryPoint = '../../LicenseManager/Content/js/app/app.js';
 var watchifyEntryPoint = './LicenseManager/Content/js/app/app.js';
 
 gulp.task('browserify', function() {
