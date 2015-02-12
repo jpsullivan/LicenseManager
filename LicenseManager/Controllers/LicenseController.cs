@@ -15,7 +15,7 @@ namespace LicenseManager.Controllers
             NewLicenseSteps = newLicenseSteps;
         }
 
-        [IntraRoute("license/new", Name = "License-New")]
+        [IntraRoute("license/new", Name = RouteNames.LicenseNew)]
         public ActionResult New()
         {
             var licenseWizard = new NewLicenseViewModel(NewLicenseSteps);

@@ -69,6 +69,8 @@ var UserList = BaseView.extend({
      * @param {UserModel} user The user model to be deleted.
      */
     deleteUser: function (user) {
+        // remove the user row from the DOM manually since we aren't data binding
+        this.$el('*[data-for="' + user.getFullName() + '"]').parents('tr').remove();
         user.destroy();
     }
 });

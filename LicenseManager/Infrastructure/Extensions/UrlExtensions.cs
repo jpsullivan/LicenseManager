@@ -81,7 +81,7 @@ namespace LicenseManager.Infrastructure.Extensions
 
         public static string NewLicense(this UrlHelper url)
         {
-            return url.Action("New", "License");
+            return url.RouteUrl(RouteNames.LicenseNew);
         }
 
         #endregion
@@ -123,6 +123,11 @@ namespace LicenseManager.Infrastructure.Extensions
         public static string AdminCustomers(this UrlHelper url)
         {
             return url.Action("Index", "Customers");
+        }
+
+        public static string AdminProducts(this UrlHelper url)
+        {
+            return url.Action("Index", "Products");
         }
 
         #endregion

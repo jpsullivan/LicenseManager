@@ -50,17 +50,16 @@ var Router = require('./router');
 // Helpers
 var ApplicationHelpers = require('./helpers/hbs_helpers');
 
-var _rootUrl, _applicationPath, _currentOrganizationId, _currentUserId;
+var _rootUrl, _applicationPath, _currentUserId;
 
 var Application = {
 
     /**
      * 
      */
-    initialize: function (rootUrl, applicationPath, currentOrgId, currentUser) {
+    initialize: function (rootUrl, applicationPath, currentUser) {
         this.mapProperties();
 
-        var parsedOrgId = parseInt(currentOrgId, 10);
         var parsedUserId;
 
         if (currentUser === undefined || currentUser === null) {
@@ -71,7 +70,6 @@ var Application = {
 
         _rootUrl = this.buildRootUrl(rootUrl);
         _applicationPath = applicationPath;
-        _currentOrganizationId = parsedOrgId;
         _currentUserId = parsedUserId;
 
         // register all the handlebars helpers

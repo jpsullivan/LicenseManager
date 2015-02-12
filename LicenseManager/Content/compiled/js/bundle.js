@@ -7,8 +7,8 @@ var _ = require('underscore');
 var Backbone = require('backbone');
 Backbone.$ = $;
 
-// ILM Namespace (hold-over from non CommonJS method)
-var ILM = {
+// LM Namespace (hold-over from non CommonJS method)
+var LM = {
     Backbone: {},
     Catalog: {},
     Collection: {
@@ -42,7 +42,7 @@ var ILM = {
     Views: {}
 };
 
-window.ILM = ILM;
+window.LM = LM;
 
 // App Dependencies
 var jquery_browser = require('jquery.browser'); // so that aui works
@@ -51,17 +51,16 @@ var Router = require('./router');
 // Helpers
 var ApplicationHelpers = require('./helpers/hbs_helpers');
 
-var _rootUrl, _applicationPath, _currentOrganizationId, _currentUserId;
+var _rootUrl, _applicationPath, _currentUserId;
 
 var Application = {
 
     /**
      * 
      */
-    initialize: function (rootUrl, applicationPath, currentOrgId, currentUser) {
+    initialize: function (rootUrl, applicationPath, currentUser) {
         this.mapProperties();
 
-        var parsedOrgId = parseInt(currentOrgId, 10);
         var parsedUserId;
 
         if (currentUser === undefined || currentUser === null) {
@@ -72,7 +71,6 @@ var Application = {
 
         _rootUrl = this.buildRootUrl(rootUrl);
         _applicationPath = applicationPath;
-        _currentOrganizationId = parsedOrgId;
         _currentUserId = parsedUserId;
 
         // register all the handlebars helpers
@@ -99,7 +97,7 @@ var Application = {
      * 
      */
     mapProperties: function () {
-        Object.defineProperty(ILM, 'RootUrl', {
+        Object.defineProperty(LM, 'RootUrl', {
             get: function () {
                 return _rootUrl;
             },
@@ -108,7 +106,7 @@ var Application = {
             }
         });
 
-        Object.defineProperty(ILM, 'ApplicationPath', {
+        Object.defineProperty(LM, 'ApplicationPath', {
             get: function () {
                 return _applicationPath;
             },
@@ -117,7 +115,7 @@ var Application = {
             }
         });
 
-        Object.defineProperty(ILM, 'CurrentUserId', {
+        Object.defineProperty(LM, 'CurrentUserId', {
             get: function () {
                 return _currentUserId;
             },
@@ -131,8 +129,8 @@ var Application = {
      * News up a fresh router.
      */
     initRouter: function () {
-        ILM.Router = new Router();
-        Backbone.history.start({ pushState: true, root: ILM.ApplicationPath });
+        LM.Router = new Router();
+        Backbone.history.start({ pushState: true, root: LM.ApplicationPath });
     }
 };
 
@@ -140,7 +138,7 @@ Application.initialize(window.rootUrl, window.applicationPath, window.currentUse
 
 module.exports = Application;
 
-},{"./helpers/hbs_helpers":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\helpers\\hbs_helpers.js","./router":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\router.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","jquery.browser":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery.browser\\dist\\jquery.browser.min.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\collections\\customers.js":[function(require,module,exports){
+},{"./helpers/hbs_helpers":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\helpers\\hbs_helpers.js","./router":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\router.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","jquery.browser":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery.browser\\dist\\jquery.browser.min.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\collections\\customers.js":[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery');
@@ -158,12 +156,12 @@ var CustomersCollection = Brace.Collection.extend({
     model: CustomerModel,
 
     url: function () {
-        return ILM.RootUrl + "api/customers";
+        return LM.RootUrl + "api/customers";
     }
 });
 
 module.exports = CustomersCollection;
-},{"../models/customer":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\models\\customer.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","backbone-brace":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\lib\\backbone-brace.min.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\collections\\users.js":[function(require,module,exports){
+},{"../models/customer":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\models\\customer.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","backbone-brace":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\lib\\backbone-brace.min.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\collections\\users.js":[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery');
@@ -181,12 +179,12 @@ var UserCollection = Brace.Collection.extend({
     model: UserModel,
 
     url: function () {
-        return ILM.RootUrl + "api/users";
+        return LM.RootUrl + "api/users";
     }
 });
 
 module.exports = UserCollection;
-},{"../models/user":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\models\\user.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","backbone-brace":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\lib\\backbone-brace.min.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\helpers\\hbs_helpers.js":[function(require,module,exports){
+},{"../models/user":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\models\\user.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","backbone-brace":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\lib\\backbone-brace.min.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\helpers\\hbs_helpers.js":[function(require,module,exports){
 "use strict";
 
 var md5 = require('MD5');
@@ -317,7 +315,7 @@ var ApplicationHelpers = {
 };
 
 module.exports = ApplicationHelpers;
-},{"MD5":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\MD5\\md5.js","moment":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\moment\\moment.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\models\\customer.js":[function(require,module,exports){
+},{"MD5":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\MD5\\md5.js","moment":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\moment\\moment.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\models\\customer.js":[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery');
@@ -346,7 +344,7 @@ var CustomerModel = Brace.Model.extend({
 
 module.exports = CustomerModel;
 
-},{"backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","backbone-brace":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\lib\\backbone-brace.min.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\models\\user.js":[function(require,module,exports){
+},{"backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","backbone-brace":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\lib\\backbone-brace.min.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\models\\user.js":[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery');
@@ -362,7 +360,7 @@ var UserModel = Brace.Model.extend({
     idAttribute: "Id",
 
 //    url: function () {
-//        return ILM.RootUrl + "api/user";
+//        return LM.RootUrl + "api/user";
 //    },
 
     namedAttributes: [
@@ -375,7 +373,7 @@ var UserModel = Brace.Model.extend({
 
 module.exports = UserModel;
 
-},{"backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","backbone-brace":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\lib\\backbone-brace.min.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\pages\\admin\\customers.js":[function(require,module,exports){
+},{"backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","backbone-brace":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\lib\\backbone-brace.min.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\pages\\admin\\customers.js":[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery');
@@ -426,7 +424,7 @@ CustomersPage.Router = Backbone.SubRoute.extend({
 
 module.exports = CustomersPage;
 
-},{"../../ui/admin/customer/customer-list":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\customer\\customer-list.js","../../view":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","backbone.subroute":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone.subroute\\backbone.subroute.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\pages\\admin\\users.js":[function(require,module,exports){
+},{"../../ui/admin/customer/customer-list":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\customer\\customer-list.js","../../view":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","backbone.subroute":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone.subroute\\backbone.subroute.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\pages\\admin\\users.js":[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery');
@@ -477,7 +475,7 @@ UsersPage.Router = Backbone.SubRoute.extend({
 
 module.exports = UsersPage;
 
-},{"../../ui/admin/user/user-list":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\user\\user-list.js","../../view":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","backbone.subroute":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone.subroute\\backbone.subroute.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\router.js":[function(require,module,exports){
+},{"../../ui/admin/user/user-list":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\user\\user-list.js","../../view":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","backbone.subroute":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone.subroute\\backbone.subroute.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\router.js":[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery');
@@ -508,9 +506,9 @@ var Router = Backbone.Router.extend({
 
     renderPage: function (pageConstructor) {
         var existingView = {};
-        if (ILM.Page) {
-            existingView = ILM.Page;
-            ILM.Page.unbind && ILM.Page.unbind(); // old page might mutate global events $(document).keypress, so unbind before creating
+        if (LM.Page) {
+            existingView = LM.Page;
+            LM.Page.unbind && LM.Page.unbind(); // old page might mutate global events $(document).keypress, so unbind before creating
         }
 
         var page = pageConstructor();
@@ -521,7 +519,7 @@ var Router = Backbone.Router.extend({
 });
 
 module.exports = Router;
-},{"./pages/admin/customers":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\pages\\admin\\customers.js","./pages/admin/users":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\pages\\admin\\users.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\customer\\customer-list.js":[function(require,module,exports){
+},{"./pages/admin/customers":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\pages\\admin\\customers.js","./pages/admin/users":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\pages\\admin\\users.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\customer\\customer-list.js":[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery');
@@ -598,7 +596,7 @@ var CustomerList = BaseView.extend({
 });
 
 module.exports = CustomerList;
-},{"../../../collections/customers":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\collections\\customers.js","../../../view":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js","./delete-dialog":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\customer\\delete-dialog.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\customer\\delete-dialog.js":[function(require,module,exports){
+},{"../../../collections/customers":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\collections\\customers.js","../../../view":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js","./delete-dialog":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\customer\\delete-dialog.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\customer\\delete-dialog.js":[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery');
@@ -670,7 +668,7 @@ var DeleteCustomerDialog = BaseView.extend({
 
 module.exports = DeleteCustomerDialog;
 
-},{"../../../view":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\user\\delete-dialog.js":[function(require,module,exports){
+},{"../../../view":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\user\\delete-dialog.js":[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery');
@@ -744,7 +742,7 @@ var DeleteUserDialog = BaseView.extend({
 
 module.exports = DeleteUserDialog;
 
-},{"../../../view":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\user\\user-list.js":[function(require,module,exports){
+},{"../../../view":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\user\\user-list.js":[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery');
@@ -816,12 +814,14 @@ var UserList = BaseView.extend({
      * @param {UserModel} user The user model to be deleted.
      */
     deleteUser: function (user) {
+        // remove the user row from the DOM manually since we aren't data binding
+        this.$el('*[data-for="' + user.getFullName() + '"]').parents('tr').remove();
         user.destroy();
     }
 });
 
 module.exports = UserList;
-},{"../../../collections/users":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\collections\\users.js","../../../view":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js","./delete-dialog":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\user\\delete-dialog.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js":[function(require,module,exports){
+},{"../../../collections/users":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\collections\\users.js","../../../view":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js","./delete-dialog":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\ui\\admin\\user\\delete-dialog.js","backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\app\\view.js":[function(require,module,exports){
 "use strict";
 
 var $ = require('jquery');
@@ -852,14 +852,14 @@ var BaseView = Backbone.View.extend({
         var modelJson = this.model && this.model.attributes ? _.clone(this.model.attributes) : {};
 
         var imageUrl;
-        if (ILM.RootUrl === "/") {
+        if (LM.RootUrl === "/") {
             imageUrl = "/Content/images/";
         } else {
-            imageUrl = ILM.RootUrl + "Content/images/";
+            imageUrl = LM.RootUrl + "Content/images/";
         }
 
         return _.extend(modelJson, {
-            RootUrl: ILM.RootUrl,
+            RootUrl: LM.RootUrl,
             ImageUrl: imageUrl
         });
     },
@@ -924,10 +924,10 @@ var BaseView = Backbone.View.extend({
         }
 
         // remove this from the debug array if it exists
-        if (ILM.Debug.Views.length > 0) {
-            var debugIndex = _.indexOf(ILM.Debug.Views, this);
+        if (LM.Debug.Views.length > 0) {
+            var debugIndex = _.indexOf(LM.Debug.Views, this);
             if (debugIndex > -1) {
-                ILM.Debug.Views.splice(debugIndex, 1);
+                LM.Debug.Views.splice(debugIndex, 1);
             }
         }
 
@@ -979,14 +979,14 @@ var BaseView = Backbone.View.extend({
 
 module.exports = BaseView;
 
-},{"backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\LicenseManager\\Content\\js\\lib\\backbone-brace.min.js":[function(require,module,exports){
+},{"backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","jquery":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\LicenseManager\\Content\\js\\lib\\backbone-brace.min.js":[function(require,module,exports){
 /*! 
  *  Backbone Brace - 2013-11-07 
  *  Copyright 2013 Atlassian Software Systems Pty Ltd
  *  Licensed under the Apache License, Version 2.0
  */
 !function () { function a(a) { return q.isArray(a) ? q.reduce(a, function (a, b) { return a[b] = null, a }, {}) : a } function b(a, e) { if (!a || null == e) return e; if (a === String && q.isString(e)) return e; if (a === Number && q.isNumber(e)) return e; if (a === Boolean && q.isBoolean(e)) return e; if ("string" == typeof a || a instanceof String) { if (typeof e != "" + a) throw "The typeof " + e + " is " + typeof e + " but expected it to be " + a; return e } if (q.isArray(a) || a === Array) { if (!d(e)) throw "Array type expected, but nonnull, non-Array value provided."; return a !== Array && a[0] ? q.map(e, q.bind(b, null, a[0])) : e } if ("function" != typeof a) throw "Invalid expected type " + a + ". Should be falsy, String, Array, Backbone.Collection constructor, or function."; return e instanceof a ? e : c(a) ? new a(b([a.model], e)) : new a(e) } function c(a, b) { return a && (a.__super__ instanceof (b || r.Collection) || a.__super__ === (b || r.Collection).prototype || a === (b || r.Collection)) } function d(a) { return q.has(a, "length") && !(a instanceof String || q.has({ string: 1, "function": 1 }, typeof a) || a instanceof r.Collection) } function e(a, b) { var c = {}; return q.each(a, function (a, d) { if (b[d] && !f(a, b[d])) { if (!a || f(b[d], a)) return; throw d + " has conflicted type descriptors." } c[d] = a }), c } function f(a, b) { return b && b !== a ? a && "string" != typeof a ? a instanceof Array ? b === Array || b instanceof Array && f(a[0], b[0]) : "function" != typeof b ? !1 : c(b) ? c(a, b) : a.prototype instanceof b : !1 : !0 } function g(a) { return q.isObject(a) ? q.reduce(a, function (a, b, c) { return b && q.isFunction(b.toJSON) ? a[c] = b.toJSON() : q.isArray(b) && (a[c] = q.map(b, function (a) { return a && q.isFunction(a.toJSON) ? a.toJSON() : a })), a }, a) : a } function h(a) { return function () { var b = a.call(this); return g(b) } } function i(b) { return function c(d, e) { var f, g, i = q.extend({}, d); return d && d.mixins && (g = d.mixins, delete i.mixins), f = b.call(this, i, e), this.prototype.namedEvents && n.Mixins.applyMixin(f, { namedEvents: this.prototype.namedEvents }), this.prototype.namedAttributes && n.Mixins.applyMixin(f, { namedAttributes: this.prototype.namedAttributes }), g && q.each(d.mixins, function (a) { n.Mixins.applyMixin(f, a) }), f.prototype.namedEvents && n.Mixins.applyMixin(f, n.EventsMixinCreator.create(f.prototype.namedEvents)), f.prototype.namedAttributes && (f.prototype.namedAttributes = a(f.prototype.namedAttributes), n.Mixins.applyMixin(f, n.AttributesMixinCreator.create(f.prototype.namedAttributes, f.prototype.idAttribute))), f.prototype.toJSON && (f.prototype.toJSON = h(f.prototype.toJSON)), f.extend = c, f } } function j(a, c) { var d = a.prototype, e = c.prototype, f = d.set; e.set = function (a, c, d) { var e, g = this.namedAttributes; if (!g || null == a) return f.apply(this, arguments); q.isObject(a) ? (e = q.clone(a), d = c) : (e = {}, e[a] = c); for (var h in e) if (q.has(e, h)) { if (!q.has(g, h)) throw "Attribute '" + h + "' does not exist"; e[h] = b(g[h], e[h]) } return f.call(this, e, d) }; var g = d.get; e.get = function (a) { if (this.namedAttributes && !q.has(this.namedAttributes, a)) throw "Attribute '" + a + "' does not exist"; return g.apply(this, arguments) } } function k(a, b) { var c = a.prototype, d = b.prototype, e = c.parse; d.parse = function (a, b) { return q.pick(e(a, b), q.keys(this.namedAttributes)) } } function l(a) { var b = a.extend(), c = a.extend; return b.extend = i(c), b } function m(a) { var b = l(a); return j(a, b), k(a, b), b } var n, o = this, p = o.Brace; n = "undefined" != typeof exports ? exports : o.Brace = {}, n.noConflict = function () { return o.Brace = p, this }; var q = o._; q || "undefined" == typeof require || (q = require("underscore")); var r = o.Backbone; r || "undefined" == typeof require || (r = require("backbone")), n.Mixins = { createMethodName: function (a, b) { return a + b.charAt(0).toUpperCase() + b.substr(1) }, applyMixin: function (b, c) { q.forEach(q.keys(c), function (d) { var f = b.prototype; if ("initialize" === d) { var g = f.initialize; return f.initialize = function () { g && g.apply(this, arguments), c.initialize.apply(this, arguments) }, void 0 } if ("validate" === d) { var h = f.validate; return f.validate = function () { if (h) { var a = h.apply(this, arguments); if (a) return a } return c.validate.apply(this, arguments) }, void 0 } if ("defaults" !== d) { if ("namedAttributes" === d) { var i = a(f.namedAttributes) || {}, j = a(c[d]); return f.namedAttributes = q.extend(i, e(j, i)), void 0 } if ("namedEvents" === d) { if (!q.isArray(c[d])) throw "Expects events member on mixin to be an array"; return f.namedEvents || (f.namedEvents = []), f.namedEvents = q.uniq(f.namedEvents.concat(c[d])), void 0 } if (f.hasOwnProperty(d)) throw "Mixin error: class already has property '" + d + "' defined"; f[d] = c[d] } else { var k = f.defaults || (f.defaults = {}), l = c[d]; for (var m in l) { if (k.hasOwnProperty(m)) throw "Mixin error: class already has default '" + m + "' defined"; k[m] = l[m] } } }, this) } }, n.AttributesMixinCreator = { create: function (a, b) { var c = {}; if (a || (a = {}), q.has(a, "id") || (a.id = null), q.each(a, function (a, b) { var d = n.Mixins.createMethodName("set", b); c[d] = function (a, c) { return this.set(b, a, c) }; var e = n.Mixins.createMethodName("get", b); c[e] = function () { return this.get(b) } }), "string" == typeof b && "undefined" != typeof a[b] && "id" !== b) { a.id = a[b]; var d = n.Mixins.createMethodName("get", b), e = n.Mixins.createMethodName("set", b); c.getId = function () { return this[d]() }, c.setId = function (a, b) { return this[e](a, b) } } return c }, ensureType: b }, n.EventsMixinCreator = { create: function (a) { var b = {}, c = function (a) { var c = n.Mixins.createMethodName("on", a); b[c] = function () { return this.on.apply(this, [a].concat(q.toArray(arguments))) }; var d = n.Mixins.createMethodName("trigger", a); b[d] = function () { return this.trigger.apply(this, [a].concat(q.toArray(arguments))) } }; return q.each(a, q.bind(c, this)), b } }, n.Model = m(r.Model), n.Collection = l(r.Collection), n.View = l(r.View), n.Router = l(r.Router); var s = function () { this.initialize.apply(this, arguments) }; q.extend(s.prototype, r.Events, { initialize: function () { } }), s.extend = r.Model.extend, n.Evented = l(s) }();
-},{"backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\MD5\\md5.js":[function(require,module,exports){
+},{"backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\MD5\\md5.js":[function(require,module,exports){
 (function (Buffer){
 (function(){
   var crypt = require('crypt'),
@@ -1150,7 +1150,7 @@ module.exports = BaseView;
 })();
 
 }).call(this,require("buffer").Buffer)
-},{"buffer":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\index.js","charenc":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\MD5\\node_modules\\charenc\\charenc.js","crypt":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\MD5\\node_modules\\crypt\\crypt.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\MD5\\node_modules\\charenc\\charenc.js":[function(require,module,exports){
+},{"buffer":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\index.js","charenc":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\MD5\\node_modules\\charenc\\charenc.js","crypt":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\MD5\\node_modules\\crypt\\crypt.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\MD5\\node_modules\\charenc\\charenc.js":[function(require,module,exports){
 var charenc = {
   // UTF-8 encoding
   utf8: {
@@ -1185,7 +1185,7 @@ var charenc = {
 
 module.exports = charenc;
 
-},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\MD5\\node_modules\\crypt\\crypt.js":[function(require,module,exports){
+},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\MD5\\node_modules\\crypt\\crypt.js":[function(require,module,exports){
 (function() {
   var base64map
       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/',
@@ -1283,7 +1283,7 @@ module.exports = charenc;
   module.exports = crypt;
 })();
 
-},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone.subroute\\backbone.subroute.js":[function(require,module,exports){
+},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone.subroute\\backbone.subroute.js":[function(require,module,exports){
 // backbone-subroute 0.4.5
 //
 // Copyright (C) 2012 Dave Cadwallader, Model N, Inc.
@@ -1394,7 +1394,7 @@ module.exports = charenc;
     return Backbone.SubRoute;
 }));
 
-},{"backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\backbone\\backbone.js":[function(require,module,exports){
+},{"backbone":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js","underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\backbone\\backbone.js":[function(require,module,exports){
 //     Backbone.js 1.1.2
 
 //     (c) 2010-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
@@ -3004,7 +3004,7 @@ module.exports = charenc;
 
 }));
 
-},{"underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\index.js":[function(require,module,exports){
+},{"underscore":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\index.js":[function(require,module,exports){
 /*!
  * The buffer module from node.js, for the browser.
  *
@@ -4057,7 +4057,7 @@ function decodeUtf8Char (str) {
   }
 }
 
-},{"base64-js":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib\\b64.js","ieee754":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754\\index.js","is-array":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\is-array\\index.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib\\b64.js":[function(require,module,exports){
+},{"base64-js":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib\\b64.js","ieee754":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754\\index.js","is-array":"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\is-array\\index.js"}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\base64-js\\lib\\b64.js":[function(require,module,exports){
 var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 
 ;(function (exports) {
@@ -4179,7 +4179,7 @@ var lookup = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/';
 	exports.fromByteArray = uint8ToBase64
 }(typeof exports === 'undefined' ? (this.base64js = {}) : exports))
 
-},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754\\index.js":[function(require,module,exports){
+},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\ieee754\\index.js":[function(require,module,exports){
 exports.read = function(buffer, offset, isLE, mLen, nBytes) {
   var e, m,
       eLen = nBytes * 8 - mLen - 1,
@@ -4265,7 +4265,7 @@ exports.write = function(buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128;
 };
 
-},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\is-array\\index.js":[function(require,module,exports){
+},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\browserify\\node_modules\\buffer\\node_modules\\is-array\\index.js":[function(require,module,exports){
 
 /**
  * isArray
@@ -4300,7 +4300,7 @@ module.exports = isArray || function (val) {
   return !! val && '[object Array]' == str.call(val);
 };
 
-},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery.browser\\dist\\jquery.browser.min.js":[function(require,module,exports){
+},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery.browser\\dist\\jquery.browser.min.js":[function(require,module,exports){
 /*!
  * jQuery Browser Plugin 0.0.6
  * https://github.com/gabceb/jquery-browser-plugin
@@ -4315,7 +4315,7 @@ module.exports = isArray || function (val) {
  *
  * Date: 30-03-2014
  */!function(a,b){"use strict";var c,d;if(a.uaMatch=function(a){a=a.toLowerCase();var b=/(opr)[\/]([\w.]+)/.exec(a)||/(chrome)[ \/]([\w.]+)/.exec(a)||/(version)[ \/]([\w.]+).*(safari)[ \/]([\w.]+)/.exec(a)||/(webkit)[ \/]([\w.]+)/.exec(a)||/(opera)(?:.*version|)[ \/]([\w.]+)/.exec(a)||/(msie) ([\w.]+)/.exec(a)||a.indexOf("trident")>=0&&/(rv)(?::| )([\w.]+)/.exec(a)||a.indexOf("compatible")<0&&/(mozilla)(?:.*? rv:([\w.]+)|)/.exec(a)||[],c=/(ipad)/.exec(a)||/(iphone)/.exec(a)||/(android)/.exec(a)||/(windows phone)/.exec(a)||/(win)/.exec(a)||/(mac)/.exec(a)||/(linux)/.exec(a)||/(cros)/i.exec(a)||[];return{browser:b[3]||b[1]||"",version:b[2]||"0",platform:c[0]||""}},c=a.uaMatch(b.navigator.userAgent),d={},c.browser&&(d[c.browser]=!0,d.version=c.version,d.versionNumber=parseInt(c.version)),c.platform&&(d[c.platform]=!0),(d.android||d.ipad||d.iphone||d["windows phone"])&&(d.mobile=!0),(d.cros||d.mac||d.linux||d.win)&&(d.desktop=!0),(d.chrome||d.opr||d.safari)&&(d.webkit=!0),d.rv){var e="msie";c.browser=e,d[e]=!0}if(d.opr){var f="opera";c.browser=f,d[f]=!0}if(d.safari&&d.android){var g="android";c.browser=g,d[g]=!0}d.name=c.browser,d.platform=c.platform,a.browser=d}(jQuery,window);
-},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js":[function(require,module,exports){
+},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\jquery\\dist\\jquery.js":[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v2.1.1
  * http://jquery.com/
@@ -13507,7 +13507,7 @@ return jQuery;
 
 }));
 
-},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\moment\\moment.js":[function(require,module,exports){
+},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\moment\\moment.js":[function(require,module,exports){
 (function (global){
 //! moment.js
 //! version : 2.8.4
@@ -16447,7 +16447,7 @@ return jQuery;
 }).call(this);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\SCLIntraSuite\\trunk\\slns\\LicenseManager\\node_modules\\underscore\\underscore.js":[function(require,module,exports){
+},{}],"C:\\Users\\jaysc_000\\Documents\\Visual Studio 2013\\Projects\\LicenseManager\\node_modules\\underscore\\underscore.js":[function(require,module,exports){
 //     Underscore.js 1.7.0
 //     http://underscorejs.org
 //     (c) 2009-2014 Jeremy Ashkenas, DocumentCloud and Investigative Reporters & Editors
