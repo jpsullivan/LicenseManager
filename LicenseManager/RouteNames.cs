@@ -6,6 +6,8 @@
         public const string CustomerNew = "Customers-New";
         public const string Dashboard = "Dashboard";
         public const string LicenseNew = "License-New";
+
         public const string ProductShow = "Product-Show";
+        public const string ProduceLicenses = "Product-Licenses";
     }
 }

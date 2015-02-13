@@ -568,6 +568,7 @@
     <Compile Include="Models\ViewModels\NewLicenseViewModel.cs" />
     <Compile Include="Models\ViewModels\PasswordResetViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductDetailsViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductLicensesViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteNames.cs" />
     <Compile Include="Services\AuditingService.cs" />
@@ -629,6 +630,7 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\License\EditorTemplates\CustomerSelectionViewModel.cshtml" />
     <Content Include="Views\Products\Show.cshtml" />
+    <Content Include="Views\Products\Versions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

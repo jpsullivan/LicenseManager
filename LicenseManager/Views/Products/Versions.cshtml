@@ -1,5 +1,5 @@
 ﻿@using LicenseManager.Infrastructure.Extensions
-@model LicenseManager.Models.ViewModels.ProductDetailsViewModel
+@model LicenseManager.Models.ViewModels.ProductLicensesViewModel
 
 @{
     var productName = Model.Product.Name;
@@ -32,9 +32,9 @@
                 <nav class="aui-navgroup aui-navgroup-vertical">
                     <div class="aui-navgroup-inner">
                         <ul class="aui-nav">
-                            <li class="aui-nav-selected"><a href="@Url.ShowProduct(Model.Product.Id, Model.Product.Name.UrlFriendly())">Summary</a></li>
+                            <li><a href="@Url.ShowProduct(Model.Product.Id, Model.Product.Name.UrlFriendly())">Summary</a></li>
                             <li><a href="@Url.ShowProduct(Model.Product.Id, Model.Product.Name.UrlFriendly())">Customer Forecasts</a></li>
-                            <li><a href="@Url.ProductLicenses(Model.Product.Id, Model.Product.Name.UrlFriendly())">Versions</a></li>
+                            <li class="aui-nav-selected"><a href="@Url.ProductLicenses(Model.Product.Id, Model.Product.Name.UrlFriendly())">Versions</a></li>
                             <li><a href="@Url.ShowProduct(Model.Product.Id, Model.Product.Name.UrlFriendly())">Audit Log</a></li>
                         </ul>
                     </div>
@@ -45,26 +45,29 @@
                 <div class="aui-page-header">
                     <div class="aui-page-header-inner">
                         <div class="aui-page-header-main">
-                            <h2>Summary</h2>
+                            <h2>Licenses</h2>
                         </div>
                     </div>
                 </div>
 
-                <div class="summary-modules">
-                    <div class="aui-group">
-                        <div class="aui-item">
-                            <div class="module">
-                                <!-- Product description module -->
-                                <p>@Model.Product.Description</p>
-                            </div>
-                            <div class="module">
-                                <!-- Product versions module -->
-                                <h3>Recent Activity</h3>
-                                <p>Lorem ipsum</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @if (Model.ProductVersions.Any())
+                {
+                    <table class="aui">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var summary in Model.ProductVersions)
+                            {
+                                <tr>
+                                    <td>@summary.Version</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                }
             </section><!-- .aui-page-panel-content -->
 
             <aside class="aui-page-panel-sidebar">

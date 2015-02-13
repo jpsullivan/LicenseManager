@@ -10,10 +10,12 @@ namespace LicenseManager.Controllers
         #region DI
 
         public IProductService ProductService { get; protected set; }
+        public IProductVersionService ProductVersionService { get; protected set; }
 
-        public ProductsController(IProductService customerService)
+        public ProductsController(IProductService productService, IProductVersionService productVersionService)
         {
-            ProductService = customerService;
+            ProductService = productService;
+            ProductVersionService = productVersionService;
         }
 
         #endregion
@@ -22,7 +24,17 @@ namespace LicenseManager.Controllers
         public ActionResult Show(int id, string name)
         {
             var product = ProductService.GetProduct(id);
-            var model = new ProductDetailsViewModel(product);
+            var versions = ProductVersionService.GetVersions(product.Id);
+            var model = new ProductDetailsViewModel(product, versions);
+            return View(model);
+        }
+
+        [IntraRoute("product/{id:INT}/{name}/versions", Name = RouteNames.ProduceLicenses)]
+        public ActionResult Versions(int id, string name)
+        {
+            var product = ProductService.GetProduct(id);
+            var versions = ProductVersionService.GetVersions(product.Id);
+            var model = new ProductLicensesViewModel(product, versions);
             return View(model);
         }
     }

@@ -2,9 +2,9 @@
 
 namespace LicenseManager.Models.ViewModels
 {
-    public class ProductDetailsViewModel
+    public class ProductLicensesViewModel
     {
-        public ProductDetailsViewModel(Product product, IEnumerable<ProductVersion> productVersions)
+        public ProductLicensesViewModel(Product product, IEnumerable<ProductVersion> productVersions)
         {
             Product = product;
             ProductVersions = productVersions;
