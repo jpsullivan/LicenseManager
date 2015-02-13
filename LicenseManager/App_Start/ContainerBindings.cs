@@ -34,17 +34,11 @@ namespace LicenseManager
                 .ToMethod(_ => new SqlErrorLog(configuration.Current.SqlConnectionString))
                 .InSingletonScope();
 
-            Bind<ICacheService>()
-                .To<HttpContextCacheService>()
-                .InRequestScope();
-
+            Bind<ICacheService>().To<HttpContextCacheService>().InRequestScope();
             Bind<ICustomerService>().To<CustomerService>().InRequestScope();
-
             Bind<IProductService>().To<ProductService>().InRequestScope();
-
-            Bind<IUserService>()
-                .To<UserService>()
-                .InRequestScope();
+            Bind<IProductVersionService>().To<ProductVersionService>().InRequestScope();
+            Bind<IUserService>().To<UserService>().InRequestScope();
 
             Bind<IControllerFactory>()
                 .To<CustomControllerFactory>()
@@ -92,6 +86,7 @@ namespace LicenseManager
             Bind<IMessageService>().To<MessageService>();
             Bind<IPrincipal>().ToMethod(context => HttpContext.Current.User);
 
+            // ViewModel bindings
             Bind<INewLicenseViewModel>().To<CustomerSelectionViewModel>();
             Bind<INewLicenseViewModel>().To<ProductNameSelectionViewModel>();
         }

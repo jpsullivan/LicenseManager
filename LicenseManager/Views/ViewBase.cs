@@ -37,7 +37,7 @@ namespace LicenseManager.Views
                 var ctrl = self.ViewContext.Controller as AppController;
                 if (ctrl == null)
                 {
-                    throw new InvalidOperationException("Viewbase should only be used on views for actions on AppControllers");
+                    throw new InvalidOperationException("Viewbase should only be used n views for actions on AppControllers. Was this controller extending AppController?");
                 }
                 return ctrl.LicenseManagerContext;
             };

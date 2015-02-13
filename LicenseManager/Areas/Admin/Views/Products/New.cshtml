@@ -14,8 +14,18 @@
     <fieldset>
         <div class="field-group">
             @Html.LabelFor(m => m.Name)
-            @Html.TextBoxFor(m => m.Name, new { @class = "text" })
+            @Html.TextBoxFor(m => m.Name, new {@class = "text"})
             <div class="error">@Html.ValidationMessageFor(m => m.Name)</div>
+        </div>
+        <div class="field-group">
+            @Html.LabelFor(m => m.Description)
+            @Html.TextAreaFor(m => m.Description, new {@class = "textarea", @rows = 6, @cols = 10})
+            <div class="error">@Html.ValidationMessageFor(m => m.Description)</div>
+        </div>
+        <div class="field-group">
+            @Html.LabelFor(m => m.Url)
+            @Html.TextBoxFor(m => m.Url, new { @class = "text" })
+            <div class="error">@Html.ValidationMessageFor(m => m.Url)</div>
         </div>
     </fieldset>
 

@@ -369,6 +369,12 @@
     <Content Include="Content\less\layout.min.css">
       <DependentUpon>layout.css</DependentUpon>
     </Content>
+    <Content Include="Content\less\operations-list.css">
+      <DependentUpon>operations-list.less</DependentUpon>
+    </Content>
+    <Content Include="Content\less\operations-list.min.css">
+      <DependentUpon>operations-list.css</DependentUpon>
+    </Content>
     <Content Include="Content\less\table.css">
       <DependentUpon>table.less</DependentUpon>
     </Content>
@@ -443,7 +449,10 @@
     </Content>
     <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Products\New.cshtml" />
-    <Content Include="Areas\Admin\Views\Products\Show.cshtml" />
+    <Content Include="Content\less\operations-list.less" />
+    <Content Include="Content\less\operations-list.css.map">
+      <DependentUpon>operations-list.css</DependentUpon>
+    </Content>
     <None Include="Content\views\widget\delete-dialog\delete-dialog.hbs" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -463,6 +472,10 @@
     <Compile Include="Areas\Admin\Controllers\CustomersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductsController.cs" />
     <Compile Include="Areas\Admin\ViewModels\ProductsViewModels.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Migrations\M013_AddMoreProductColumns.cs" />
+    <Compile Include="Migrations\M014_CreateProductVersions.cs" />
+    <Compile Include="Models\ProductVersion.cs" />
     <Compile Include="Models\ViewModels\CustomersViewModels.cs" />
     <Compile Include="Authentication\AuthenticatedUser.cs" />
     <Compile Include="Authentication\AuthenticationService.cs" />
@@ -554,6 +567,7 @@
     <Compile Include="Models\ViewModels\LogOnViewModel.cs" />
     <Compile Include="Models\ViewModels\NewLicenseViewModel.cs" />
     <Compile Include="Models\ViewModels\PasswordResetViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductDetailsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteNames.cs" />
     <Compile Include="Services\AuditingService.cs" />
@@ -567,9 +581,11 @@
     <Compile Include="Services\Interfaces\IDiagnosticsService.cs" />
     <Compile Include="Services\Interfaces\IMessageService.cs" />
     <Compile Include="Services\Interfaces\IProductService.cs" />
+    <Compile Include="Services\Interfaces\IProductVersionService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\ProductService.cs" />
+    <Compile Include="Services\ProductVersionService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Strings1.Designer.cs">
@@ -612,6 +628,7 @@
     <Content Include="Views\License\EditorTemplates\ProductNameSelectionViewModel.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\License\EditorTemplates\CustomerSelectionViewModel.cshtml" />
+    <Content Include="Views\Products\Show.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -24,5 +24,11 @@ namespace LicenseManager.Areas.Admin.ViewModels
         [Required]
         [Display(Name = "Product Name")]
         public string Name { get; set; }
+
+        [Display(Name = "Description")]
+        public string Description { get; set; }
+
+        [Display(Name = "Product Url")]
+        public string Url { get; set; }
     }
 }

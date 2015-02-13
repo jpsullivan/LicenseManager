@@ -19,7 +19,12 @@
   overflow: hidden;
   white-space: nowrap;
   display: inline-block;
-  max-width: 180px;
+  max-width: 240px;
+  vertical-align: middle;
+}
+.customer-table td[headers=hosted] > div {
+  max-width: 40px;
+  text-align: center;
   vertical-align: middle;
 }
 .aui-page-focused .aui-page-panel {
@@ -46,7 +51,7 @@
 #footer-company-logo a:hover {
   background-image: url('../../images/company-logo-color.jpg');
 }
-.aui-header .aui-header-logo-ilm .aui-header-logo-device {
+.aui-header .aui-header-logo-lm .aui-header-logo-device {
   width: 110px;
   background-image: url('../../images/logo.png');
 }
@@ -103,6 +108,53 @@
 .welcome-mat p {
   padding: 0;
   color: #333;
+}
+.aui-page-panel-content .summary-modules {
+  margin-top: 20px;
+}
+.aui-page-panel-content .summary-modules .module {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  margin-top: 25px;
+}
+.aui-page-panel-content .summary-modules .module:first-child {
+  margin-top: 0;
+}
+.aui-page-panel-content .summary-modules .module:before,
+.aui-page-panel-content .summary-modules .module:after {
+  content: " ";
+  display: table;
+}
+.aui-page-panel-content .summary-modules .module:after {
+  clear: both;
+}
+.aui-page-panel-content .summary-modules .module > .module-header > h3 {
+  margin-top: 0;
+}
+.aui-page-panel-content .summary-modules .module > .module-header:before,
+.aui-page-panel-content .summary-modules .module > .module-header:after {
+  content: " ";
+  display: table;
+}
+.aui-page-panel-content .summary-modules .module > .module-header:after {
+  clear: both;
+}
+.aui-page-panel-content .summary-modules .module > .module-header + .module-content {
+  margin-top: 10px;
+}
+.aui-page-panel-content .summary-modules .module .module-content:before,
+.aui-page-panel-content .summary-modules .module .module-content:after {
+  content: " ";
+  display: table;
+}
+.aui-page-panel-content .summary-modules .module .module-content:after {
+  clear: both;
+}
+.aui-page-panel-content .summary-modules .module + .module {
+  border-top: 1px solid #cccccc;
+  margin-top: 25px;
+  padding-top: 25px;
 }
 table.aui > tbody > tr:hover {
   background-color: #F5F5F5;

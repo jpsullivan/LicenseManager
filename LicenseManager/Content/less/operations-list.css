@@ -1,0 +1,19 @@
+﻿ul.operations-list {
+  display: inline;
+  list-style-type: none;
+  margin: 3px 0 0 0;
+  padding: 0;
+}
+ul.operations-list > li {
+  display: inline-block;
+}
+ul.operations-list > li + li:before {
+  content: "\b7";
+  padding: 0 0.42857142857142855em 0 0.21428571428571427em;
+  color: #ccc;
+  margin: 0 3px;
+}
+ul.operations-list .list-label {
+  color: #707070;
+}
+/*# sourceMappingURL=operations-list.css.map */

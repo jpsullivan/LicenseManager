@@ -86,6 +86,15 @@ namespace LicenseManager.Infrastructure.Extensions
 
         #endregion
 
+        #region Products
+
+        public static string ShowProduct(this UrlHelper url, int productId, string productName)
+        {
+            return url.RouteUrl(RouteNames.ProductShow, new { id = productId, name = productName });
+        }
+
+        #endregion
+
         #region Users
 
         public static string UserAccount(this UrlHelper url)
@@ -133,11 +142,6 @@ namespace LicenseManager.Infrastructure.Extensions
         public static string AdminNewProduct(this UrlHelper url)
         {
             return url.Action("New", "Products");
-        }
-
-        public static string AdminShowProduct(this UrlHelper url, int productId, string productName)
-        {
-            return url.RouteUrl(RouteNames.AdminProductShow, new {productId, productName});
         }
 
         #endregion

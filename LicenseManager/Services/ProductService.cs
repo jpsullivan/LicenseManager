@@ -7,6 +7,17 @@ namespace LicenseManager.Services
 {
     public class ProductService : IProductService
     {
+        #region DI
+
+        public IProductVersionService ProductVersionService { get; protected set; }
+
+        public ProductService(IProductVersionService productVersionService)
+        {
+            ProductVersionService = productVersionService;
+        }
+
+        #endregion
+
         /// <summary>
         /// Retrieves a signle <see cref="Product"/> based on its ID.
         /// </summary>
@@ -38,9 +49,17 @@ namespace LicenseManager.Services
                 throw new ArgumentNullException("product");
             }
 
+            product.CreatedUtc = DateTime.UtcNow;
+            product.LastUpdatedUtc = DateTime.UtcNow;
+
             var success = Current.DB.Products.Insert(new
             {
-                product.Name
+                product.Name,
+                product.Description,
+                product.Url,
+                product.CreatedBy,
+                product.CreatedUtc,
+                product.LastUpdatedUtc
             });
 
             if (success == null)

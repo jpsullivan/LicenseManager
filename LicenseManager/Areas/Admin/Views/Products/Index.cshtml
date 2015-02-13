@@ -23,6 +23,7 @@
         <tr>
             <th id="name">Name</th>
             <th id="description">Description</th>
+            <th id="url">Url</th>
             <th id="actions"></th>
         </tr>
     </thead>
@@ -34,11 +35,16 @@
                 <tr>
                     <td headers="name">
                         <div title="@product.Name">
-                            <a href="@Url.AdminShowProduct(product.Id, product.Name.UrlFriendly())">@product.Name</a>
+                            <a href="@Url.ShowProduct(product.Id, product.Name.UrlFriendly())">@product.Name</a>
                         </div>
                     </td>
                     <td headers="description">
-                        <div title="@product.">@product.Description</div>
+                        <div title="@product.Description">@product.Description</div>
+                    </td>
+                    <td headers="url">
+                        <div title="@product.Url">
+                            <a href="@product.Url">@product.Url</a>
+                        </div>
                     </td>
                     <td headers="actions"></td>
                 </tr>

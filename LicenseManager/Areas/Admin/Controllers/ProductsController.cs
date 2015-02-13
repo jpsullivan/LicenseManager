@@ -56,7 +56,10 @@ namespace LicenseManager.Areas.Admin.Controllers
             {
                 var product = new Product
                 {
-                    Name = model.Name
+                    Name = model.Name,
+                    Description = model.Description,
+                    Url = model.Url,
+                    CreatedBy = GetCurrentUser().Username
                 };
 
                 ProductService.CreateProduct(product);
@@ -67,15 +70,6 @@ namespace LicenseManager.Areas.Admin.Controllers
             }
 
             return SafeRedirect(Url.AdminProducts());
-        }
-
-        [IntraRoute("admin/product/{id:INT}/{name}", Name = RouteNames.AdminProductShow)]
-        public ActionResult Show(int id, string name)
-        {
-            var product = ProductService.GetProduct(id);
-
-
-            return View();
         }
     }
 }
