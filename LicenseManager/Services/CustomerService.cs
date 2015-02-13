@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using LicenseManager.Models;
+using LicenseManager.Services.Interfaces;
 
-namespace LicenseManager.Services.Interfaces
+namespace LicenseManager.Services
 {
     public class CustomerService : ICustomerService
     {

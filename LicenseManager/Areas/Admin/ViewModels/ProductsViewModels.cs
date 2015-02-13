@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using LicenseManager.Models;
 
 namespace LicenseManager.Areas.Admin.ViewModels
@@ -16,5 +17,12 @@ namespace LicenseManager.Areas.Admin.ViewModels
         {
             Products = products;
         }
+    }
+
+    public class NewProductModel
+    {
+        [Required]
+        [Display(Name = "Product Name")]
+        public string Name { get; set; }
     }
 }

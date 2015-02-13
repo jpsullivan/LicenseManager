@@ -442,6 +442,8 @@
       <DependentUpon>customer-table.css</DependentUpon>
     </Content>
     <Content Include="Areas\Admin\Views\Products\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\New.cshtml" />
+    <Content Include="Areas\Admin\Views\Products\Show.cshtml" />
     <None Include="Content\views\widget\delete-dialog\delete-dialog.hbs" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -559,7 +561,7 @@
     <Compile Include="Services\CryptographyService.cs" />
     <Compile Include="Services\DiagnosticsService.cs" />
     <Compile Include="Services\HttpContextCacheService.cs" />
-    <Compile Include="Services\Interfaces\CustomerService.cs" />
+    <Compile Include="Services\CustomerService.cs" />
     <Compile Include="Services\Interfaces\ICacheService.cs" />
     <Compile Include="Services\Interfaces\ICustomerService.cs" />
     <Compile Include="Services\Interfaces\IDiagnosticsService.cs" />

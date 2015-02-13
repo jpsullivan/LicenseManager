@@ -69,6 +69,8 @@ var CustomerList = BaseView.extend({
      * @param {CustomerModel} customer The customer model to be deleted.
      */
     deleteCustomer: function (customer) {
+        // remove the customer row from the DOM manually since we aren't data binding
+        this.$('*[data-for="' + customer.getName() + '"]').parents('tr').remove();
         customer.destroy();
     }
 });

@@ -130,6 +130,16 @@ namespace LicenseManager.Infrastructure.Extensions
             return url.Action("Index", "Products");
         }
 
+        public static string AdminNewProduct(this UrlHelper url)
+        {
+            return url.Action("New", "Products");
+        }
+
+        public static string AdminShowProduct(this UrlHelper url, int productId, string productName)
+        {
+            return url.RouteUrl(RouteNames.AdminProductShow, new {productId, productName});
+        }
+
         #endregion
 
         private static UriBuilder GetCanonicalUrl(UrlHelper url)

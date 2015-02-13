@@ -1,0 +1,28 @@
+﻿@using LicenseManager.Infrastructure.Extensions
+@model LicenseManager.Areas.Admin.ViewModels.NewProductModel
+
+@{
+    Layout = "~/Views/Shared/_FocusedLayout.cshtml";
+}
+
+<h2>Create a new product</h2>
+
+@using (Html.BeginForm("CreateProduct", "Products", FormMethod.Post, new { @class = "aui" }))
+{
+    @Html.AntiForgeryToken()
+
+    <fieldset>
+        <div class="field-group">
+            @Html.LabelFor(m => m.Name)
+            @Html.TextBoxFor(m => m.Name, new { @class = "text" })
+            <div class="error">@Html.ValidationMessageFor(m => m.Name)</div>
+        </div>
+    </fieldset>
+
+    <div class="buttons-container">
+        <div class="buttons">
+            <input class="aui-button aui-button-primary" type="submit" id="submit" name="submit" value="Create product">
+            <a id="cancel" class="aui-button aui-button-link" name="cancel" accesskey="c" href="@Url.AdminProducts()">Cancel</a>
+        </div>
+    </div>
+}

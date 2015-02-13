@@ -13,7 +13,7 @@
             <h2>Products</h2>
         </div>
         <div class="aui-page-header-actions">
-            <a class="aui-button" href="@Url.NewCustomer()" autocomplete="off" tabindex="0">Create product</a>
+            <a class="aui-button" href="@Url.AdminNewProduct()" autocomplete="off" tabindex="0">Create product</a>
         </div>
     </div>
 </header>
@@ -33,7 +33,9 @@
             {
                 <tr>
                     <td headers="name">
-                        <div title="@product.Name">@product.Name</div>
+                        <div title="@product.Name">
+                            <a href="@Url.AdminShowProduct(product.Id, product.Name.UrlFriendly())">@product.Name</a>
+                        </div>
                     </td>
                     <td headers="description">
                         <div title="@product.">@product.Description</div>
