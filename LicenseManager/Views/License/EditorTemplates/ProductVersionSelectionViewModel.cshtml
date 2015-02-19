@@ -1,0 +1,10 @@
+﻿@model LicenseManager.Models.ViewModels.ProductVersionSelectionViewModel
+
+@{
+    var dropdownItems = Model.Versions.Select(version => new SelectListItem { Value = version.Id.ToString(), Text = version.Version }).ToList();
+}
+
+<div class="field-group">
+    @Html.LabelFor(m => m.VersionId)
+    @Html.DropDownListFor(m => m.VersionId, dropdownItems, "Choose a product version", new { @class = "select" })
+</div>

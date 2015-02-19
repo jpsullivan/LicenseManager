@@ -55,6 +55,25 @@ namespace LicenseManager.Models.ViewModels
         public int ProductId { get; set; }
     }
 
+    [Serializable] // step 3
+    public class ProductVersionSelectionViewModel : INewLicenseViewModel
+    {
+        public IEnumerable<ProductVersion> Versions { get; private set; }
+
+        public ProductVersionSelectionViewModel()
+        {
+        }
+
+        public ProductVersionSelectionViewModel(IProductVersionService productVersionService)
+        {
+            Versions = productVersionService.GetVersions(5);
+        }
+
+        [Required]
+        [Display(Name = "Version")]
+        public int VersionId { get; set; }
+    }
+
     [Serializable]
     public class LicenseDetailsViewModel : INewLicenseViewModel
     {

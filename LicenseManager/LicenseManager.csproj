@@ -478,6 +478,8 @@
     <Compile Include="Migrations\M013_AddMoreProductColumns.cs" />
     <Compile Include="Migrations\M014_CreateProductVersions.cs" />
     <Compile Include="Migrations\M015_AddCreatedUtcColumnToProductVersions.cs" />
+    <Compile Include="Migrations\M016_CreateProductFeatures.cs" />
+    <Compile Include="Models\ProductFeature.cs" />
     <Compile Include="Models\ProductVersion.cs" />
     <Compile Include="Models\ViewModels\CustomersViewModels.cs" />
     <Compile Include="Authentication\AuthenticatedUser.cs" />
@@ -638,6 +640,8 @@
     <Content Include="Views\Products\Versions.cshtml" />
     <Content Include="Views\Shared\Partials\Products\ShowSidebar.cshtml" />
     <Content Include="Views\Products\NewVersion.cshtml" />
+    <Content Include="Views\Products\CustomerForecasts.cshtml" />
+    <Content Include="Views\License\EditorTemplates\ProductVersionSelectionViewModel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

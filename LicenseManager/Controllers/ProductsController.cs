@@ -34,6 +34,12 @@ namespace LicenseManager.Controllers
             return View(model);
         }
 
+        [IntraRoute("product/{id:INT}/{name}/customer-forecasts", Name = RouteNames.ProductCustomerForecasts)]
+        public ActionResult CustomerForecasts(int id, string name)
+        {
+            return View();
+        }
+
         [IntraRoute("product/{id:INT}/{name}/versions", Name = RouteNames.ProductVersions)]
         public ActionResult Versions(int id, string name)
         {
