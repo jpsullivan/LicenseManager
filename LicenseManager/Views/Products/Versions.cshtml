@@ -1,5 +1,7 @@
 ﻿@using LicenseManager.Infrastructure.Extensions
-@model LicenseManager.Models.ViewModels.ProductLicensesViewModel
+@using LicenseManager.Models
+@using LicenseManager.Models.ViewModels
+@model ProductLicensesViewModel
 
 @{
     var productName = Model.Product.Name;
@@ -28,24 +30,16 @@
 
     <div class="aui-page-panel">
         <div class="aui-page-panel-inner">
-            <div class="aui-page-panel-nav">
-                <nav class="aui-navgroup aui-navgroup-vertical">
-                    <div class="aui-navgroup-inner">
-                        <ul class="aui-nav">
-                            <li><a href="@Url.ShowProduct(Model.Product.Id, Model.Product.Name.UrlFriendly())">Summary</a></li>
-                            <li><a href="@Url.ShowProduct(Model.Product.Id, Model.Product.Name.UrlFriendly())">Customer Forecasts</a></li>
-                            <li class="aui-nav-selected"><a href="@Url.ProductLicenses(Model.Product.Id, Model.Product.Name.UrlFriendly())">Versions</a></li>
-                            <li><a href="@Url.ShowProduct(Model.Product.Id, Model.Product.Name.UrlFriendly())">Audit Log</a></li>
-                        </ul>
-                    </div>
-                </nav><!-- .aui-navgroup -->
-            </div><!-- .aui-page-panel-nav -->
+            @Html.Partial("Partials/Products/ShowSidebar", new SidebarViewModel<Product>("versions", Model.Product))
 
             <section class="aui-page-panel-content">
                 <div class="aui-page-header">
                     <div class="aui-page-header-inner">
                         <div class="aui-page-header-main">
-                            <h2>Licenses</h2>
+                            <h2>Versions</h2>
+                        </div>
+                        <div class="aui-page-header-actions">
+                            <a class="aui-button" href="@Url.NewProductVersion(Model.Product.Id, Model.Product.Name.UrlFriendly())">Create version</a>
                         </div>
                     </div>
                 </div>
@@ -69,32 +63,6 @@
                     </table>
                 }
             </section><!-- .aui-page-panel-content -->
-
-            <aside class="aui-page-panel-sidebar">
-                <h3>Versions</h3>
-                @if (!Model.ProductVersions.Any())
-                {
-                    <p>No versions assigned to this product.</p>
-                }
-                else
-                {
-                    <table class="aui">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var summary in Model.ProductVersions)
-                            {
-                                <tr>
-                                    <td>@summary.Version</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                }
-            </aside>
         </div><!-- .aui-page-panel-inner -->
     </div><!-- .aui-page-panel -->
 </section>

@@ -1,0 +1,16 @@
+﻿@using LicenseManager.Infrastructure.Extensions
+@using LicenseManager.Models.ViewModels
+@model SidebarViewModel<LicenseManager.Models.Product>
+
+<div class="aui-page-panel-nav">
+    <nav class="aui-navgroup aui-navgroup-vertical">
+        <div class="aui-navgroup-inner">
+            <ul class="aui-nav">
+                <li class="@Model.GetMenuItemClass("summary")"><a href="@Url.ShowProduct(Model.Actor.Id, Model.Actor.Name.UrlFriendly())">Summary</a></li>
+                <li class="@Model.GetMenuItemClass("customer forecasts")"><a href="@Url.ShowProduct(Model.Actor.Id, Model.Actor.Name.UrlFriendly())">Customer Forecasts</a></li>
+                <li class="@Model.GetMenuItemClass("versions")"><a href="@Url.ProductLicenses(Model.Actor.Id, Model.Actor.Name.UrlFriendly())">Versions</a></li>
+                <li class="@Model.GetMenuItemClass("audit log")"><a href="@Url.ShowProduct(Model.Actor.Id, Model.Actor.Name.UrlFriendly())">Audit Log</a></li>
+            </ul>
+        </div>
+    </nav><!-- .aui-navgroup -->
+</div><!-- .aui-page-panel-nav -->

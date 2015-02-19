@@ -6,6 +6,13 @@ namespace LicenseManager.Services.Interfaces
     public interface IProductVersionService
     {
         /// <summary>
+        /// Retrieves a single <see cref="ProductVersion"/>.
+        /// </summary>
+        /// <param name="id">The product version ID.</param>
+        /// <returns></returns>
+        ProductVersion GetVersion(int id);
+
+        /// <summary>
         /// Retrieves a collection of product versions for the specified product.
         /// </summary>
         /// <param name="productId">The ID of the product to fetch versions for.</param>
@@ -19,6 +26,13 @@ namespace LicenseManager.Services.Interfaces
         /// <param name="version"></param>
         /// <returns>The newly created <see cref="ProductVersion"/>.</returns>
         ProductVersion CreateVersion(int productId, string version);
+
+        /// <summary>
+        /// Adds a new product version to the database.
+        /// </summary>
+        /// <param name="version"></param>
+        /// <returns></returns>
+        ProductVersion CreateVersion(ProductVersion version);
 
         /// <summary>
         /// Updates an existing product version with the new version number/name.

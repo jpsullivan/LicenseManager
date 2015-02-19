@@ -8,6 +8,8 @@
         public const string LicenseNew = "License-New";
 
         public const string ProductShow = "Product-Show";
-        public const string ProduceLicenses = "Product-Licenses";
+        public const string ProductVersions = "Product-Versions";
+        public const string NewProductVersion = "Product-NewVersion";
+        public const string CreateProductVersion = "Product-CreateVersion";
     }
 }

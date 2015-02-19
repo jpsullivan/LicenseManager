@@ -23,7 +23,6 @@ namespace LicenseManager.Migrations
                 .Column("CreatedUtc")
                 .Column("LastUpdatedUtc")
                 .FromTable("Products");
-
         }
     }
 }
