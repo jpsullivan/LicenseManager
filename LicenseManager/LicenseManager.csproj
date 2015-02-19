@@ -67,8 +67,9 @@
     <Reference Include="Glimpse.Ado">
       <HintPath>..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
     </Reference>
-    <Reference Include="Glimpse.AspNet">
-      <HintPath>..\packages\Glimpse.AspNet.1.8.1\lib\net45\Glimpse.AspNet.dll</HintPath>
+    <Reference Include="Glimpse.AspNet, Version=1.9.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Glimpse.AspNet.1.9.2\lib\net45\Glimpse.AspNet.dll</HintPath>
     </Reference>
     <Reference Include="Glimpse.Core">
       <HintPath>..\packages\Glimpse.1.8.6\lib\net45\Glimpse.Core.dll</HintPath>
@@ -296,6 +297,7 @@
     <Content Include="Content\css\lib\aui\select2x2.png" />
     <Content Include="Content\css\lib\aui\toolbar\aui-toolbar-24px.png" />
     <Content Include="Content\css\lib\aui\wait.gif" />
+    <Content Include="Content\images\logo.png" />
     <Content Include="Content\js\app\app.js" />
     <Content Include="Content\js\app\collections\customers.js" />
     <Content Include="Content\js\app\collections\users.js" />
@@ -569,6 +571,7 @@
     <Compile Include="Models\ViewModels\PasswordResetViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductDetailsViewModel.cs" />
     <Compile Include="Models\ViewModels\ProductLicensesViewModel.cs" />
+    <Compile Include="Models\ViewModels\SidebarViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RouteNames.cs" />
     <Compile Include="Services\AuditingService.cs" />
@@ -643,7 +646,6 @@
     <Folder Include="Content\compiled\css\" />
     <Folder Include="Content\compiled\js\" />
     <Folder Include="Content\fonts\" />
-    <Folder Include="Content\images\" />
     <Folder Include="Content\js\app\ui\widget\delete-dialog\" />
     <Folder Include="Content\views\widget\confirm-dialog\" />
   </ItemGroup>

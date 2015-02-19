@@ -16,7 +16,7 @@ namespace LicenseManager.Infrastructure.DB
             // using the WebConfigurationManager instead of the ConfigurationService due 
             // to the fact that the ConfigurationService relies on the following code to work
             // for fetching settings that require a database connection.
-            var diagnosticsEnabled = Convert.ToBoolean(WebConfigurationManager.AppSettings["DiagnosticsEnabled"]);
+            var diagnosticsEnabled = Convert.ToBoolean(WebConfigurationManager.AppSettings["LM.DiagnosticsEnabled"]);
             if (diagnosticsEnabled)
             {
                 // Client-side diagnostics enabled; Show glimpse
