@@ -88,7 +88,9 @@ namespace LicenseManager
 
             // ViewModel bindings
             Bind<INewLicenseViewModel>().To<CustomerSelectionViewModel>();
-            Bind<INewLicenseViewModel>().To<ProductNameSelectionViewModel>();
+            Bind<INewLicenseViewModel>().To<FeatureSelectionViewModel>();
+            Bind<INewLicenseViewModel>().To<LicenseExpirationViewModel>();
+            //Bind<INewLicenseViewModel>().To<ProductNameSelectionViewModel>();
         }
     }
 }

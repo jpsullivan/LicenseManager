@@ -4,7 +4,9 @@
     var dropdownItems = Model.Customers.Select(customer => new SelectListItem { Value = customer.Id.ToString(), Text = customer.Name });
 }
 
-<div class="field-group">
-    @Html.LabelFor(m => m.CustomerId)
-    @Html.DropDownListFor(m => m.CustomerId, dropdownItems, "Select a customer", new { @class = "select" })
-</div>
+<fieldset>
+    <div class="field-group">
+        @Html.LabelFor(m => m.CustomerId)
+        @Html.DropDownListFor(m => m.CustomerId, dropdownItems, "Select a customer", new { @class = "select" })
+    </div>
+</fieldset>

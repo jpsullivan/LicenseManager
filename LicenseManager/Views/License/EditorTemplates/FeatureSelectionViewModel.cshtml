@@ -1,0 +1,29 @@
+﻿@model LicenseManager.Models.ViewModels.FeatureSelectionViewModel
+
+<fieldset>
+    <div class="field-group">
+        @Html.LabelFor(m => m.MaxProfiles)
+        @Html.TextBoxFor(m => m.MaxProfiles, new { @class = "text short-field" })
+        <div class="error">@Html.ValidationMessageFor(m => m.MaxProfiles)</div>
+    </div>
+    <div class="field-group">
+        @Html.LabelFor(m => m.MaxDesktopClients)
+        @Html.TextBoxFor(m => m.MaxDesktopClients, new { @class = "text short-field" })
+        <div class="error">@Html.ValidationMessageFor(m => m.MaxDesktopClients)</div>
+    </div>
+    <div class="field-group">
+        @Html.LabelFor(m => m.MaxMobileClients)
+        @Html.TextBoxFor(m => m.MaxMobileClients, new { @class = "text short-field" })
+        <div class="error">@Html.ValidationMessageFor(m => m.MaxMobileClients)</div>
+    </div>
+    <div class="field-group">
+        @Html.LabelFor(m => m.MaxWebClients)
+        @Html.TextBoxFor(m => m.MaxWebClients, new { @class = "text short-field" })
+        <div class="error">@Html.ValidationMessageFor(m => m.MaxWebClients)</div>
+    </div>
+    <div class="field-group">
+        @Html.LabelFor(m => m.MaxRequestForms)
+        @Html.TextBoxFor(m => m.MaxRequestForms, new { @class = "text short-field" })
+        <div class="error">@Html.ValidationMessageFor(m => m.MaxRequestForms)</div>
+    </div>
+</fieldset>

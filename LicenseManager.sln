@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManager", "LicenseMa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LicenseManager.Tests", "LicenseManager.Tests\LicenseManager.Tests.csproj", "{7FAF597F-0CD7-4D89-9B7D-ABA836D2FF3C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{4BB2A0B8-FF53-46BC-B49B-4634E1B7AA81}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

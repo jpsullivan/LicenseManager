@@ -31,19 +31,5 @@ namespace LicenseManager.Controllers
         {
             return View();
         }
-
-        [IntraRoute("product/{id:INT}/{name}/versions", Name = RouteNames.ProductVersions)]
-        public ActionResult Versions(int id, string name)
-        {
-            var product = ProductService.GetProduct(id);
-            var model = new ProductLicensesViewModel(product);
-            return View(model);
-        }
-
-        [IntraRoute("product/{id:INT}/{name}/versions/new", Name = RouteNames.NewProductVersion)]
-        public ActionResult NewVersion(int id, string name)
-        {
-            return View();
-        }
     }
 }

@@ -629,13 +629,14 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Users\Index.cshtml" />
     <Content Include="Views\Shared\_FocusedLayout.cshtml" />
-    <Content Include="Views\License\EditorTemplates\ProductNameSelectionViewModel.cshtml" />
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\License\EditorTemplates\CustomerSelectionViewModel.cshtml" />
     <Content Include="Views\Products\Show.cshtml" />
     <Content Include="Views\Shared\Partials\Products\ShowSidebar.cshtml" />
-    <Content Include="Views\Products\NewVersion.cshtml" />
     <Content Include="Views\Products\CustomerForecasts.cshtml" />
+    <Content Include="Views\License\EditorTemplates\FeatureSelectionViewModel.cshtml" />
+    <Content Include="Views\Shared\_FocusedSmallLayout.cshtml" />
+    <Content Include="Views\License\EditorTemplates\LicenseExpirationViewModel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

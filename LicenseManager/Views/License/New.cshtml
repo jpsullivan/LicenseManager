@@ -15,10 +15,8 @@
     @Html.Hidden("StepType", currentStep.GetType())
     
     if (Model.CurrentStepIndex > 0) { }
-
-    <fieldset>
-        @Html.EditorFor(x => currentStep, null, "")
-    </fieldset>
+    
+    @Html.EditorFor(x => currentStep, null, "")
 
     <div class="buttons-container">
         <div class="buttons">
@@ -42,4 +40,11 @@
             }
         </div>
     </div>
+}
+
+@section secondaryScripts
+{
+    <script type="text/javascript">
+        AJS.$('select').auiSelect2();
+    </script>
 }

@@ -98,11 +98,6 @@ namespace LicenseManager.Infrastructure.Extensions
             return url.RouteUrl(RouteNames.ProductVersions, new { id = productId, name = productName });
         }
 
-        public static string NewProductVersion(this UrlHelper url, int productId, string productName)
-        {
-            return url.RouteUrl(RouteNames.NewProductVersion, new { id = productId, name = productName });
-        }
-
         #endregion
 
         #region Users

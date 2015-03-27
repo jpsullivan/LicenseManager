@@ -10,7 +10,7 @@
         public const string ProductShow = "Product-Show";
         public const string ProductCustomerForecasts = "Product-CustomerForecasts";
         public const string ProductVersions = "Product-Versions";
-        public const string NewProductVersion = "Product-NewVersion";
-        public const string CreateProductVersion = "Product-CreateVersion";
+
+        public const string LicenseNextStep = "License-NextStep-Post";
     }
 }

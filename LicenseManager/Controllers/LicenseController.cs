@@ -26,21 +26,12 @@ namespace LicenseManager.Controllers
             return View(licenseWizard);
         }
 
-        [IntraRoute("license/create", HttpVerbs.Post, Name = "License-NextStep-Post")]
+        [IntraRoute("license/create", HttpVerbs.Post, Name = RouteNames.LicenseNextStep)]
         public ActionResult NextStep([Deserialize] NewLicenseViewModel licenseWizard, INewLicenseViewModel step)
         {
             licenseWizard.Steps[licenseWizard.CurrentStepIndex] = step;
             if (ModelState.IsValid)
             {
-//                if (licenseWizard.CurrentStepIndex == 1)
-//                {
-//                    var model = licenseWizard.Steps[1] as ProductNameSelectionViewModel;
-//                    if (model != null)
-//                    {
-//                        CacheService.SetItem("SelectedProductId", model.ProductId, TimeSpan.FromMinutes(1));
-//                    }
-//                }
-
                 if (!string.IsNullOrEmpty(Request["next"]))
                 {
                     licenseWizard.CurrentStepIndex++;
