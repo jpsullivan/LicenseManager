@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+using IntraLicenseLibrary;
 using LicenseManager.Infrastructure.Attributes;
 using LicenseManager.Models.ViewModels;
 using LicenseManager.Services.Interfaces;

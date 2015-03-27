@@ -477,6 +477,7 @@
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Migrations\M013_AddMoreProductColumns.cs" />
     <Compile Include="Migrations\M014_CreateProductFeatures.cs" />
+    <Compile Include="Migrations\M015_CreateLicenses.cs" />
     <Compile Include="Models\ProductFeature.cs" />
     <Compile Include="Models\ProductVersion.cs" />
     <Compile Include="Models\ViewModels\CustomersViewModels.cs" />
@@ -585,6 +586,7 @@
     <Compile Include="Services\Interfaces\ICacheService.cs" />
     <Compile Include="Services\Interfaces\ICustomerService.cs" />
     <Compile Include="Services\Interfaces\IDiagnosticsService.cs" />
+    <Compile Include="Services\Interfaces\ILicenseService.cs" />
     <Compile Include="Services\Interfaces\IMessageService.cs" />
     <Compile Include="Services\Interfaces\IProductService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
@@ -657,6 +659,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Strings1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\src\IntraLicenseLibrary\IntraLicenseLibrary.csproj">
+      <Project>{5F057C55-15B4-4520-9045-E39E3DCBE5C6}</Project>
+      <Name>IntraLicenseLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
