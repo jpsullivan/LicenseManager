@@ -38,7 +38,6 @@ namespace LicenseManager
             Bind<ICacheService>().To<HttpContextCacheService>().InRequestScope();
             Bind<ICustomerService>().To<CustomerService>().InRequestScope();
             Bind<IProductService>().To<ProductService>().InRequestScope();
-            Bind<IProductVersionService>().To<ProductVersionService>().InRequestScope();
             Bind<IUserService>().To<UserService>().InRequestScope();
 
             Bind<IControllerFactory>()
@@ -90,8 +89,6 @@ namespace LicenseManager
             // ViewModel bindings
             Bind<INewLicenseViewModel>().To<CustomerSelectionViewModel>();
             Bind<INewLicenseViewModel>().To<ProductNameSelectionViewModel>();
-            Bind<INewLicenseViewModel>().To<ProductVersionSelectionViewModel>();
-            //.WithConstructorArgument("productId", c => c.Kernel.);
         }
     }
 }

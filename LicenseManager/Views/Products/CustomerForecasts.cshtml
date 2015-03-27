@@ -43,25 +43,6 @@
                         </div>
                     </div>
                 </div>
-
-                @if (Model.ProductVersions.Any())
-                {
-                    <table class="aui">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var summary in Model.ProductVersions)
-                            {
-                                <tr>
-                                    <td>@summary.Version</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                }
             </section><!-- .aui-page-panel-content -->
         </div><!-- .aui-page-panel-inner -->
     </div><!-- .aui-page-panel -->

@@ -587,11 +587,9 @@
     <Compile Include="Services\Interfaces\IDiagnosticsService.cs" />
     <Compile Include="Services\Interfaces\IMessageService.cs" />
     <Compile Include="Services\Interfaces\IProductService.cs" />
-    <Compile Include="Services\Interfaces\IProductVersionService.cs" />
     <Compile Include="Services\Interfaces\IUserService.cs" />
     <Compile Include="Services\MessageService.cs" />
     <Compile Include="Services\ProductService.cs" />
-    <Compile Include="Services\ProductVersionService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Strings1.Designer.cs">
@@ -635,11 +633,9 @@
     <Content Include="Views\Customers\Index.cshtml" />
     <Content Include="Views\License\EditorTemplates\CustomerSelectionViewModel.cshtml" />
     <Content Include="Views\Products\Show.cshtml" />
-    <Content Include="Views\Products\Versions.cshtml" />
     <Content Include="Views\Shared\Partials\Products\ShowSidebar.cshtml" />
     <Content Include="Views\Products\NewVersion.cshtml" />
     <Content Include="Views\Products\CustomerForecasts.cshtml" />
-    <Content Include="Views\License\EditorTemplates\ProductVersionSelectionViewModel.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

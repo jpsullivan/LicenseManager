@@ -7,17 +7,6 @@ namespace LicenseManager.Services
 {
     public class ProductService : IProductService
     {
-        #region DI
-
-        public IProductVersionService ProductVersionService { get; protected set; }
-
-        public ProductService(IProductVersionService productVersionService)
-        {
-            ProductVersionService = productVersionService;
-        }
-
-        #endregion
-
         /// <summary>
         /// Retrieves a signle <see cref="Product"/> based on its ID.
         /// </summary>

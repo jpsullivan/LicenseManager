@@ -57,32 +57,6 @@
                     </div>
                 </div>
             </section><!-- .aui-page-panel-content -->
-
-            <aside class="aui-page-panel-sidebar">
-                <h3>Versions</h3>
-                @if (!Model.ProductVersions.Any())
-                {
-                    <p>No versions assigned to this product.</p>
-                }
-                else
-                {
-                    <table class="aui">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var summary in Model.ProductVersions)
-                            {
-                                <tr>
-                                    <td>@summary.Version</td>
-                                </tr>
-                            }
-                        </tbody>
-                    </table>
-                }
-            </aside>
         </div><!-- .aui-page-panel-inner -->
     </div><!-- .aui-page-panel -->
 </section>
