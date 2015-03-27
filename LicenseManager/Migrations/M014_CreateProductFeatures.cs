@@ -3,7 +3,7 @@
 namespace LicenseManager.Migrations
 {
     [Migration(201502190149)]
-    public class M016_CreateProductFeatures : Migration
+    public class M014_CreateProductFeatures : Migration
     {
         private const string TableName = "ProductFeatures";
 
@@ -12,7 +12,6 @@ namespace LicenseManager.Migrations
             Create.Table(TableName)
                 .WithColumn("Id").AsInt32().NotNullable().PrimaryKey().Identity()
                 .WithColumn("ProductId").AsInt32().NotNullable()
-                .WithColumn("VersionId").AsInt32().NotNullable()
                 .WithColumn("Name").AsString(256).NotNullable()
                 .WithColumn("Key").AsString(512).NotNullable()
                 .WithColumn("DataType").AsString(12).NotNullable()
@@ -26,17 +25,12 @@ namespace LicenseManager.Migrations
             Create.ForeignKey("FK_ProductFeatures_Products_ProductId")
                 .FromTable(TableName).ForeignColumn("ProductId")
                 .ToTable("Products").PrimaryColumn("Id");
-
-            Create.ForeignKey("FK_ProductFeatures_ProductVersions_VersionId")
-                .FromTable(TableName).ForeignColumn("VersionId")
-                .ToTable("ProductVersions").PrimaryColumn("Id");
         }
 
         public override void Down()
         {
-            Delete.ForeignKey("FK_ProductFeatures_ProductVersions_VersionId");
-            Delete.ForeignKey("FK_ProductFeatures_Products_ProductId");
-            Delete.ForeignKey("FK_ProductFeatures_ProductFeatures");
+            Delete.ForeignKey("FK_ProductFeatures_Products_ProductId").OnTable(TableName);
+            Delete.ForeignKey("FK_ProductFeatures_ProductFeatures").OnTable(TableName);
             Delete.Table(TableName);
         }
     }

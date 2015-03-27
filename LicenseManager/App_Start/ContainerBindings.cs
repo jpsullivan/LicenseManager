@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Net.Mail;
 using System.Security.Principal;
@@ -90,6 +91,7 @@ namespace LicenseManager
             Bind<INewLicenseViewModel>().To<CustomerSelectionViewModel>();
             Bind<INewLicenseViewModel>().To<ProductNameSelectionViewModel>();
             Bind<INewLicenseViewModel>().To<ProductVersionSelectionViewModel>();
+            //.WithConstructorArgument("productId", c => c.Kernel.);
         }
     }
 }

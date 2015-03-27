@@ -476,9 +476,7 @@
     <Compile Include="Areas\Admin\ViewModels\ProductsViewModels.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Migrations\M013_AddMoreProductColumns.cs" />
-    <Compile Include="Migrations\M014_CreateProductVersions.cs" />
-    <Compile Include="Migrations\M015_AddCreatedUtcColumnToProductVersions.cs" />
-    <Compile Include="Migrations\M016_CreateProductFeatures.cs" />
+    <Compile Include="Migrations\M014_CreateProductFeatures.cs" />
     <Compile Include="Models\ProductFeature.cs" />
     <Compile Include="Models\ProductVersion.cs" />
     <Compile Include="Models\ViewModels\CustomersViewModels.cs" />

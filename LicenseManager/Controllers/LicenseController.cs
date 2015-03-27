@@ -1,18 +1,22 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 using LicenseManager.Infrastructure.Attributes;
 using LicenseManager.Models.ViewModels;
+using LicenseManager.Services.Interfaces;
 using Microsoft.Web.Mvc;
 
 namespace LicenseManager.Controllers
 {
     public class LicenseController : AppController
     {
-        protected List<INewLicenseViewModel> NewLicenseSteps { get; set; }
+        public List<INewLicenseViewModel> NewLicenseSteps { get; protected set; }
+        public ICacheService CacheService { get; protected set; }
 
-        public LicenseController(List<INewLicenseViewModel> newLicenseSteps)
+        public LicenseController(List<INewLicenseViewModel> newLicenseSteps, ICacheService cacheService)
         {
             NewLicenseSteps = newLicenseSteps;
+            CacheService = cacheService;
         }
 
         [IntraRoute("license/new", Name = RouteNames.LicenseNew)]
@@ -28,6 +32,15 @@ namespace LicenseManager.Controllers
             licenseWizard.Steps[licenseWizard.CurrentStepIndex] = step;
             if (ModelState.IsValid)
             {
+//                if (licenseWizard.CurrentStepIndex == 1)
+//                {
+//                    var model = licenseWizard.Steps[1] as ProductNameSelectionViewModel;
+//                    if (model != null)
+//                    {
+//                        CacheService.SetItem("SelectedProductId", model.ProductId, TimeSpan.FromMinutes(1));
+//                    }
+//                }
+
                 if (!string.IsNullOrEmpty(Request["next"]))
                 {
                     licenseWizard.CurrentStepIndex++;

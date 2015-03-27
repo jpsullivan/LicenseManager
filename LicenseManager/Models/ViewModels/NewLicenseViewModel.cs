@@ -64,8 +64,14 @@ namespace LicenseManager.Models.ViewModels
         {
         }
 
-        public ProductVersionSelectionViewModel(IProductVersionService productVersionService)
+        public ProductVersionSelectionViewModel(IProductVersionService productVersionService, ICacheService cacheService)
         {
+//            int productId = Convert.ToInt32(cacheService.GetItem("SelectedProductId"));
+//            if (productId > 0)
+//            {
+//                Versions = productVersionService.GetVersions(productId);
+//            }
+
             Versions = productVersionService.GetVersions(5);
         }
 

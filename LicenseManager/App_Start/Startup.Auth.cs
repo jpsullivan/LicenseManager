@@ -28,7 +28,7 @@ namespace LicenseManager
             {
                 AuthenticationType = AuthenticationTypes.External,
                 AuthenticationMode = AuthenticationMode.Passive,
-                CookieName = ".AspNet." + AuthenticationTypes.External,
+                CookieName = ".AspNet.ILM." + AuthenticationTypes.External,
                 ExpireTimeSpan = TimeSpan.FromMinutes(5)
             });
 

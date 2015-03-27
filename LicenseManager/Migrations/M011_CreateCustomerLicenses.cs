@@ -31,8 +31,8 @@ namespace LicenseManager.Migrations
 
         public override void Down()
         {
-            Delete.ForeignKey("FK_CustomerLicenses_Customers_CustomerId");
-            Delete.ForeignKey("FK_CustomerLicenses_Products_ProductId");
+            Delete.ForeignKey("FK_CustomerLicenses_Customers_CustomerId").OnTable(TableName);
+            Delete.ForeignKey("FK_CustomerLicenses_Products_ProductId").OnTable(TableName);
             Delete.Table(TableName);
         }
     }

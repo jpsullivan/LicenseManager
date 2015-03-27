@@ -27,8 +27,8 @@ namespace LicenseManager.Migrations
 
         public override void Down()
         {
-            Delete.ForeignKey("FK_Credentials_Users_UserId");
-            Delete.ForeignKey("FK_Credentials_Credentials");
+            Delete.ForeignKey("FK_Credentials_Users_UserId").OnTable(TableName);
+            Delete.ForeignKey("FK_Credentials_Credentials").OnTable(TableName);
             Delete.Table(TableName);
         }
     }
